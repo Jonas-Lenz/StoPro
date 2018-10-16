@@ -4,7 +4,7 @@
 \newcommand{\Z}{\mathbb{Z}} % ganze Zahlen
 \newcommand{\Q}{\mathbb{Q}} % rationale Zahlen
 \newcommand{\R}{\mathds{R}} % reelle Zahlen
-\newcommand{\C}{\mathds{C}}
+\renewcommand{\C}{\mathds{C}}
 \newcommand{\CC}{\mathrm{C}} %Differenzierbarkeit
 \DeclareMathOperator{\Ret}{Re} % Guter Realteil
 
@@ -16,21 +16,14 @@
 \newcommand{\F}{\mathcal{F}} %Fourier transform
 \newcommand{\Lr}{\mathrm{L}} %Lp raeume
 
-% Umgebungen für Definitionen, Sätze, usw.
-
+% Environments for definitions, theorems etc.
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}[chapter]
-\newtheorem{bsp}[defi]{Example}
-
+\newtheorem{exmpl}[defi]{Example}
 
 \theoremstyle{plain}
-\newtheorem{satz}[defi]{Theorem}
+\newtheorem{thm}[defi]{Theorem}
 \newtheorem{lem}[defi]{Lemma}
-\newtheorem{bem}[defi]{Remark}
+\newtheorem{rem}[defi]{Remark}
 \newtheorem{prop}[defi]{Proposition}
 \newtheorem{cor}[defi]{Corollary}
-
-\theoremstyle{remark}
-\newtheorem*{Bemerkung}{Bemerkung}
-
-\def\Satzrefname{Satz}
