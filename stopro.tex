@@ -1,0 +1,50 @@
+\documentclass[12pt,a4paper,twoside]{scrreprt}
+
+\include{pakete}
+
+
+\include{befehle}
+
+%FARBEN
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\begin{document}
+\pagenumbering{roman}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+  \begin{center}
+    \vspace{1cm}
+    \includegraphics[width=0.5\linewidth]{TU_Darmstadt_Logo.pdf}
+    \vspace{1cm}
+    
+    \large{Fachbereich Mathematik}
+    \vspace{3.5cm}
+    
+    \Huge{\textbf{Stochastic processes}\\}
+    \vspace*{0.5cm}    
+    \Large{{Winter Term 2018/2019}\\}
+    \vspace*{0.5cm}    
+    \small{Lecture held by Prof. Volker Betz\\}
+    \vspace*{1.0cm}
+    \small{Typeset in \LaTeX\ by Jonas Lenz\\}
+    \small{Errors can be reported at: \url{jlenz@mathematik.tu-darmstadt.de}}
+
+    \vspace*{\fill}
+    \small{Version of \today}
+  \end{center}
+\end{titlepage}
+
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+\tableofcontents
+%\pagestyle{heading}
+\include{motivation}
+\include{chap1}
+%\include{chap2}
+%\include{chap3}
+%\include{chap4}
+%\include{chap5}
+
+\end{document}
+
