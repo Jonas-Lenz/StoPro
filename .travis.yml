@@ -10,8 +10,8 @@ cache:
   - ./texlive/texlive
 
 script:
-- latexmk -pdf --outdir=build --auxdir=build --interaction=nonstopmode --halt-on-error skript.tex
-- mv build/skript.pdf page/
+- latexmk -pdf --outdir=build --auxdir=build --interaction=nonstopmode --halt-on-error stopro.tex
+- mv build/stopro.pdf page/
 
 deploy:
   provider: pages
