@@ -1,17 +1,69 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass{scrreprt}
+
+%%% Sane encodings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Support PDF properly
+\usepackage{hyperref}
+
+% Reducing easily detectable mistakes
+\usepackage[l2tabu, orthodox, experimental]{nag}
+
+% Better typography
+\usepackage{microtype}
+
+% We are writing in english
 \usepackage[english]{babel}
+
+% Mathy stuff
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{microtype}
 \usepackage{amsthm}
 \usepackage{mathtools}
-\usepackage{enumitem}
 \usepackage{dsfont}
 
-\input{befehle}
+% Support for listy environments
+\usepackage{enumitem}
+
+% Newer and better clone of the Computer Modern font
+\usepackage{lmodern}
+
+%%% Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create an index
+\usepackage{makeidx}
+\makeindex
+
+\hypersetup{
+	% Encode PDF strings in Unicode, not ASCII
+	unicode,
+}
+
+%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{commands}
+
+%%% Looks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\KOMAoption{fontsize}{10pt}
+\KOMAoption{paper}{A4}
+\KOMAoption{parskip}{half}
+
+\hypersetup{
+	% Do not draw boxes around links, colour them
+	colorlinks,
+}
+
+%%% Metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Stochastic Processes}
+\author{Jonas Lenz}
+\makeatletter
+\hypersetup{
+	pdfauthor=\@author,
+	pdftitle=\@title,
+}
+\makeatother
+
 \begin{document}
 \maketitle
 \chapter*{Motivation and Planned Topics}
@@ -59,21 +111,21 @@ A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is c
 \end{defi}
 %TODO Kasten
 
-\begin{bsp}
+\begin{exmpl}
 \begin{enumerate}[label=(\alph*)]
 \item $(E,\Sigma)=(\Rd,\mathcal{B}(\Rd))$ and $T=\R_{\geq 0}$ then a SP is called \emph{$\Rd$-valued, continuous-time SP},
 \item $(E,\Sigma)=(\{-1,1\},\mathcal{P}(\{-1,1\}))$ and $T=\Z^d$, \glqq spin system\grqq\, ,
 \item If $E$ is countable and $T=\N_0$ we speak of an \emph{time discrete SP}.
 \end{enumerate}
-\end{bsp}
+\end{exmpl}
 
-\begin{bem}
+\begin{rem}
 From a dynamical point of view, $(X_t)$ is a $t$-dependent quantity that changes with time, this is suitable for the first and third example.
 From a global point of view, a SP is one RV with values in the space $\Omega=E^T=\{f\colon T\to E\}$.
 In the first example this means to consider the whole \emph{path} $(X_t)_{t\geq 0}$ as one object.
 In the second example, one \glqq spin configuration\grqq $\in \{-1,1\}^{\Z^d}$ is an element of $\Omega$.
 Questions: $\sigma$-algebra? Existence?
-\end{bem}
+\end{rem}
 
 \begin{defi}
 Let $\textbf{X}=(X_t)_{t\in T}$ be a SP where the state space $E$ is a group (e.g $E=\Rd$) and $T\subseteq \R$.
@@ -99,7 +151,7 @@ A $\Rd$-valued SP $\textbf{B}=(B_t)_{t \in \R_{\geq 0}}$ is called \emph{Brownia
 \end{defi}
 %TODO Kasten
 
-\begin{bem}
+\begin{rem}
 Interpretation of (B0)-(B4) in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$.
 \begin{enumerate}
 \item[(B0)] $\int_0^0\xi_s~\mathrm{d}s=0$,
@@ -108,7 +160,7 @@ Interpretation of (B0)-(B4) in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$.
 \item[(B3)] Central limit theorem and Riemann approximation,
 \item[(B4)] $t\to \int_0^t f_s~\mathrm{d}s$ is continuous for all \glqq sensible\grqq\, functions $f$, in particular for $f=\xi$.
 \end{enumerate}
-\end{bem}
+\end{rem}
 
 \begin{defi}
 The \emph{Gaussian measure} $\mathcal{N}(m,\sigma^2)$ with \emph{mean} $m$ and \emph{variance} $\sigma^2$ is the probability measure on
