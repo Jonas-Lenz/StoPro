@@ -10,7 +10,7 @@ cache:
   - ./texlive/texlive
 
 script:
-- latexmk -pdf --outdir=build --auxdir=build --halt-on-error skript.tex
+- latexmk -pdf --outdir=build --auxdir=build --interaction=nonstopmode --halt-on-error skript.tex
 - mv build/skript.pdf page/
 
 deploy:
