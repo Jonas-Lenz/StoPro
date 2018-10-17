@@ -1,1 +1,1 @@
-latexmk microtype mathtools enumitem doublestroke koma-script lm ec nag
+latexmk microtype mathtools enumitem doublestroke koma-script lm ec nag cite
