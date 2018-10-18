@@ -1,15 +1,15 @@
 \chapter{Brownian Motion}
 \begin{defi}
 Let $(E,\Sigma)$ be a measurable space and $T$ a set.
-A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is called \emph{$E$-valued stochastic process (SP) with index set $T$}
+A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is called \emph{$E$-valued stochastic process (SP) with index set $T$}.
 \end{defi}
 %TODO Kasten
 
 \begin{bsp}
 \begin{enumerate}[label=(\alph*)]
 \item $(E,\Sigma)=(\Rd,\mathcal{B}(\Rd))$ and $T=\R_{\geq 0}$ then a SP is called \emph{$\Rd$-valued, continuous-time SP},
-\item $(E,\Sigma)=(\{-1,1\},\mathcal{P}(\{-1,1\}))$ and $T=\Z^d$, \glqq spin system\grqq\, ,
-\item If $E$ is countable and $T=\N_0$ we speak of an \emph{time discrete SP}.
+\item $(E,\Sigma)=\left(\{-1,1\},\mathcal{P}\left(\{-1,1\}\right)\right)$ and $T=\Z^d$ then a SP is called \glqq spin system\grqq ,
+\item If $E$ is countable and $T=\N_0$, we speak of an \emph{time discrete SP}.
 \end{enumerate}
 \end{bsp}
 
@@ -79,6 +79,6 @@ $m_k\to m$ and $\sigma_k\to \sigma$ if and only if $\mathcal{N}(m_k,\sigma_k^2)\
 \end{prop}
 
 \begin{defi}
-A $\Rd$-valued RV $X$ is called \emph{$d$-dimensional Gaussian} if for all linear $L\colon \Rd\to \R$ there exist $m,\sigma^2$ with $LX\sim \mathcal{N}(m,\sigma^2)$.
+A $\Rd$-valued RV $X$ is called \emph{$d$-dimensional Gaussian} if for all linear functionals $L\colon \Rd\to \R$ there exist $m,\sigma^2$ with $LX\sim \mathcal{N}(m,\sigma^2)$.
 Explicitly: if $X=(X^1,\dots,X^d)$ this means that for all $a_1,\dots,a_d \in \R$ there exist $m,\sigma^2$ such that $\sum_{i=1}^d a_i X^i \sim \mathcal{N}(m,\sigma^2)$.
 \end{defi}
