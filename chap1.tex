@@ -1,7 +1,7 @@
 \chapter{Brownian Motion}
 \begin{defi}
 Let $(E,\Sigma)$ be a measurable space and $T$ a set.
-A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is called \emph{$E$-valued stochastic process (SP) with index set $T$}.
+A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\i n T}$ is called \emph{$E$-valued stochastic process (SP) with index set $T$}.
 \end{defi}
 %TODO Kasten
 
@@ -17,15 +17,15 @@ A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is c
 From a dynamical point of view, $(X_t)$ is a $t$-dependent quantity that changes with time, this is suitable for the first and third example.
 From a global point of view, a SP is one RV with values in the space $\Omega=E^T=\{f\colon T\to E\}$.
 In the first example this means to consider the whole \emph{path} $(X_t)_{t\geq 0}$ as one object.
-In the second example, one \glqq spin configuration\grqq $\in \{-1,1\}^{\Z^d}$ is an element of $\Omega$.
+In the second example, one \glqq spin configuration\grqq $\i n \{-1,1\}^{\Z^d}$ is an element of $\Omega$.
 Questions: $\sigma$-algebra? Existence?
 \end{bem}
 
 \begin{defi}
-Let $\textbf{X}=(X_t)_{t\in T}$ be a SP where the state space $E$ is a group (e.g $E=\Rd$) and $T\subseteq \R$.
-The set $(X_{s,t})_{s,t\in T}$ with $X_{s,t}\coloneqq X_t-X_s$ is called the \emph{increment process of $\textbf{X}$} or \emph{set of increments}.
-A SP has \emph{independent increments} if for all $n\in \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n$ with $s_i,t_i \in T$, the RVs $(X_{s_i,t_i})_{1\leq i \leq n}$ are independent.
-A SP has \emph{stationary increments} if for all $n\in \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n, r$ with $s_i,t_i,r \in T$, we have
+Let $\textbf{X}=(X_t)_{t\i n T}$ be a SP where the state space $E$ is a group (e.g $E=\Rd$) and $T\subseteq \R$.
+The set $(X_{s,t})_{s,t\i n T}$ with $X_{s,t}\coloneqq X_t-X_s$ is called the \emph{increment process of $\textbf{X}$} or \emph{set of increments}.
+A SP has \emph{independent increments} if for all $n\i n \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n$ with $s_i,t_i \i n T$, the RVs $(X_{s_i,t_i})_{1\leq i \leq n}$ are independent.
+A SP has \emph{stationary increments} if for all $n\i n \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n, r$ with $s_i,t_i,r \i n T$, we have
 \begin{align*}
 (X_{s_i,t_i})_{i=1,\dots,n}\sim  (X_{s_i+r,t_i+r})_{i=1,\dots,n},
 \end{align*}
@@ -34,30 +34,30 @@ i.e. equal in distribution.
 %TODO Kasten
 
 \begin{defi}
-A $\Rd$-valued SP $\textbf{B}=(B_t)_{t \in \R_{\geq 0}}$ is called \emph{Brownian Motion} (BM) if 
+A $\Rd$-valued SP $\textbf{B}=(B_t)_{t \i n \R_{\geq 0}}$ is called \emph{Brownian Motion} (BM) if 
 \begin{enumerate}
-\item[(B0)] $B_0(\omega)=0$ for almost all $w\in \Omega$,
+\item[(B0)] $B_0(\omega)=0$ for almost all $w\i n \Omega$,
 \item[(B1)] $\textbf{B}$ has independent increments,
 \item[(B2)] $\textbf{B}$ has stationary increments,
-\item[(B3)] $B_t-B_s\eqqcolon B_{s,t}\sim B_{t-s}\sim \mathcal{N}(0,(t-s)I_d)$
-\item[(B4)] The map $t\mapsto B_t(\omega)$ is continuous for all $\omega \in \Omega$.
+\item[(B3)] $B_t-B_s\eqqcolon B_{s,t}\sim B_{t-s}\sim \N{0}{(t-s)I_d}$
+\item[(B4)] The map $t\mapsto B_t(\omega)$ is continuous for all $\omega \i n \Omega$.
 \end{enumerate}
 \end{defi}
 %TODO Kasten
 
 \begin{bem}
-Interpretation of (B0)-(B4) in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$.
+Interpretation of (B0)-(B4) in view of $B_t=\i nt_0^t \xi_s~\mathrm{d}s$.
 \begin{enumerate}
-\item[(B0)] $\int_0^0\xi_s~\mathrm{d}s=0$,
-\item[(B1)] $B_t-B_s=\int_s^t \xi_r~\mathrm{d}r$ and $\xi_r \amalg (\xi_s)_{s\not =r}~~\forall r$
+\item[(B0)] $\i nt_0^0\xi_s~\mathrm{d}s=0$,
+\item[(B1)] $B_t-B_s=\i nt_s^t \xi_r~\mathrm{d}r$ and $\xi_r \amalg (\xi_s)_{s\not =r}~~\forall r$
 \item[(B2)] distribution of $\xi_r$ does not depend on $r$,
 \item[(B3)] Central limit theorem and Riemann approximation,
-\item[(B4)] $t\to \int_0^t f_s~\mathrm{d}s$ is continuous for all \glqq sensible\grqq\, functions $f$, in particular for $f=\xi$.
+\item[(B4)] $t\to \i nt_0^t f_s~\mathrm{d}s$ is continuous for all \glqq sensible\grqq\, functions $f$, in particular for $f=\xi$.
 \end{enumerate}
 \end{bem}
 
 \begin{defi}
-The \emph{Gaussian measure} $\mathcal{N}(m,\sigma^2)$ with \emph{mean} $m$ and \emph{variance} $\sigma^2$ is the probability measure on
+The \emph{Gaussian measure} $\N{m}{\sigma^2}$ with \emph{mean} $m$ and \emph{variance} $\sigma^2$ is the probability measure on
 $(\R,\mathcal{B}(\R))$ with Lebesgue density
 \begin{align*}
 g_{m\sigma^2}(x)=\frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x-m)^2\right).
@@ -65,22 +65,22 @@ g_{m\sigma^2}(x)=\frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x
 \end{defi}
 
 \begin{prop}
-Let $X\sim \mathcal{N}(m,\sigma^2)$. Then
+Let $X\sim \N{m}{\sigma^2}$. Then
 \begin{enumerate}[label=(\alph*)]
-\item $\mathds{E}(X)=m, \mathds{V}(X)=\sigma^2$.
+\item $\E{X}=m, \mathds{V}(X)=\sigma^2$.
 \item We have the \glqq Gaussian tail estimate\grqq
 \begin{align*}
-\frac{1}{\sqrt{2\pi}} \frac{C}{C^2+1}\mathrm{e}^{-\frac{C^2}{2}}\leq \mathds{P}(X-m\geq C \sigma)\leq \frac{1}{\sqrt{2\pi}} \frac{1}{C}\mathrm{e}^{-\frac{C^2}{2}},
+\frac{1}{\sqrt{2\pi}} \frac{C}{C^2+1}\e^{-\frac{C^2}{2}}\leq \mathds{P}(X-m\geq C \sigma)\leq \frac{1}{\sqrt{2\pi}} \frac{1}{C}\e^{-\frac{C^2}{2}},
 \end{align*}
 for all $C>0,\sigma>0$.
-\item For $(m_k)_{k\in \N}\subseteq \R$, $m\in \R$, $(\sigma_k)_{k\in \N}\subseteq \R_{\geq 0}$, $\sigma\in \R_{\geq 0}$ we have:
-$m_k\to m$ and $\sigma_k\to \sigma$ if and only if $\mathcal{N}(m_k,\sigma_k^2)\overset{\text{d}}{\to} \mathcal{N}(m,\sigma^2)$.
+\item For $(m_k)_{k\i n \N}\subseteq \R$, $m\i n \R$, $(\sigma_k)_{k\i n \N}\subseteq \R_{\geq 0}$, $\sigma\i n \R_{\geq 0}$ we have:
+$m_k\to m$ and $\sigma_k\to \sigma$ if and only if $\N{m_k}{\sigma_k^2}\overset{\text{d}}{\to} \N{m}{\sigma^2}$.
 \end{enumerate}
 \end{prop}
 
 \begin{defi}
-A $\Rd$-valued RV $X$ is called \emph{$d$-dimensional Gaussian} if for all linear functionals $L\colon \Rd\to \R$ there exist $m,\sigma^2$ with $LX\sim \mathcal{N}(m,\sigma^2)$.
-Explicitly: if $X=(X^1,\dots,X^d)$ this means that for all $a_1,\dots,a_d \in \R$ there exist $m,\sigma^2$ such that $\sum_{i=1}^d a_i X^i \sim \mathcal{N}(m,\sigma^2)$.
+A $\Rd$-valued RV $X$ is called \emph{$d$-dimensional Gaussian} if for all linear functionals $L\colon \Rd\to \R$ there exist $m,\sigma^2$ with $LX\sim \N{m}{\sigma^2}$.
+Explicitly: if $X=(X^1,\dots,X^d)$ this means that for all $a_1,\dots,a_d \i n \R$ there exist $m,\sigma^2$ such that $\sum_{i=1}^d a_i X^i \sim \N{m}{\sigma^2}$.
 \end{defi}
 
 \begin{bsp}
@@ -88,34 +88,34 @@ Explicitly: if $X=(X^1,\dots,X^d)$ this means that for all $a_1,\dots,a_d \in \R
 \item If $X^1,\dots,X^d$ are independent $1$-dimensional Gaussian, then 
 $\textbf{X}=(X^1,\dots,X^d)$ is a $d$-dimensional Gaussian.
 \item \emph{Warning:} without independence, this is not true in general.
-Let $X^1\sim \mathcal{N}(0,1)$ and
+Let $X^1\sim \N01$ and
 \begin{align*}
 X^2(\omega)=\begin{cases}
 X^1(\omega)~~&\forall \omega \text{ with } \abs{X^1(\omega)}>1\\
 -X^1(\omega)&\forall \omega \text{ with } \abs{X^1(\omega)}\leq 1.
 \end{cases}
 \end{align*}
-Then, $X^2\sim \mathcal{N}(0,1)$ (check it, compute $\mathds{P}(X^2<c)$ for all $c\in \R$), but $(X^1,X^2)$ is not Gaussian as
-$\abs{X^1(\omega)-X^2(\omega)}\leq 2$ for all $\omega \in \Omega$ and
+Then, $X^2\sim \N01$ (check it, compute $\mathds{P}(X^2<c)$ for all $c\i n \R$), but $(X^1,X^2)$ is not Gaussian as
+$\abs{X^1(\omega)-X^2(\omega)}\leq 2$ for all $\omega \i n \Omega$ and
 $\abs{X^1(\omega)-X^2(\omega)}\not \equiv 0$ which implies that $X^1-X^2$ is not Gaussian.
 \end{enumerate}
 \end{bsp}
 
 \begin{prop}
-A real RV $X$ is $\mathcal{N}(m,\sigma^2)$-distributed if and only if
+A real RV $X$ is $\N{m}{\sigma^2}$-distributed if and only if
 its characteristic function is given by
 \begin{align}\label{eq:characteristicfunction}
-\varphi_X(u)=\mathrm{e}^{\mathrm{i}um}\mathrm{e}^{-\frac{1}{2}\sigma^2u^2}.
+\varphi_X(u)=\e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}.
 \end{align}
 \begin{proof}
-Recall that $\varphi_X(u)=\mathds{E}(\mathrm{e}^{\mathrm{i}uX}$ uniquely determines the distribution of $X$.
+Recall that $\varphi_X(u)=\E{\e^{\i uX}}$ uniquely determines the distribution of $X$.
 So it is enough to show \eqref{eq:characteristicfunction} if
-$X\sim \mathcal{N}(m,\sigma^2)$.
-Since $\varphi_{X+m}\mathds{E} \left(\mathrm{e}^{\mathrm{i}u(X+m)}\right)=\mathrm{e}^{\mathrm{i}um}\varphi_X(u)$,
+$X\sim \N{m}{\sigma^2}$.
+Since $\varphi_{X+m}\E{\e^{\i u(X+m)}}=\e^{\i um}\varphi_X(u)$,
 it suffices to consider the case $m=0$. We have by Lebesgues differentiation theorem
 \begin{align*}
-\frac{\mathrm{d}}{\mathrm{d}u}\varphi_X(u)&=\frac{1}{\sqrt{2\pi \sigma^2}} \int \mathrm{i}x\mathrm{e}^{\mathrm{i}ux}\mathrm{e}^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
-&=\frac{1}{\sqrt{2 \pi \sigma^2}} \int \mathrm{i}(\mathrm{i}u \mathrm{e}^{\mathrm{i}ux})\sigma^2 \mathrm{e}^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
+\frac{\mathrm{d}}{\mathrm{d}u}\varphi_X(u)&=\frac{1}{\sqrt{2\pi \sigma^2}} \i nt \i x\e^{\i ux}\e^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
+&=\frac{1}{\sqrt{2 \pi \sigma^2}} \i nt \i (\i u \e^{\i ux})\sigma^2 \e^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
 &=-u \sigma^2 \varphi_X(u),
 \end{align*}
 and $\varphi_X(0)=1$. Hence, $h(u)=\ln \varphi_X(u)$ solves the ODE
@@ -125,11 +125,10 @@ h(0)=0,
 \end{align*}
 which implies $h(u)=-\frac{1}{2}u^2\sigma^2$.
 \end{proof}
-%TODO zeichen für E,e,i,N
 \end{prop}
 
 \begin{cor}
-For $X \sim \mathcal{N}(0,\sigma^2)$ and $J\in \C$ we have $\mathds{E}\left(\mathrm{e}^{JX}\right)=\mathrm{e}^{\sigma^2 \frac{J^2}{2}}$.
+For $X \sim \N{0}{\sigma^2}$ and $J\i n \C$ we have $\E{\e^{JX}})=\e^{\sigma^2 \frac{J^2}{2}}$.
 \begin{proof}
 This follows by analytic continuation of the previous proposition.
 \end{proof}
@@ -138,26 +137,26 @@ This follows by analytic continuation of the previous proposition.
 \begin{thm}
 Let $X$ be $d$-dimensional Gaussian.
 \begin{enumerate}[label=\alph*)]
-\item The distribution of $X$ is uniquely determined by the \emph{mean vector of $X$} $\textbf{m}=\mathds{E}(X)=\mathds{E}((X^i))_{1\leq i\leq d} \in \Rd$ and the \emph{covariance matrix of $X$} $C=(C_{ij})_{1\leq i,j\leq d}$ with $C_{ij}=Cov(X^i,X^j)$.
-We write $X \sim \mathcal{N}(\textbf{m},C)$.
+\item The distribution of $X$ is uniquely determined by the \emph{mean vector of $X$} $\textbf{m}=\E{X}=\E{(X^i)}_{1\leq i\leq d} \i n \Rd$ and the \emph{covariance matrix of $X$} $C=(C_{ij})_{1\leq i,j\leq d}$ with $C_{ij}=Cov(X^i,X^j)$.
+We write $X \sim \N{\textbf{m}}{C}$.
 \item If $C$ is invertible, then the distribution of $X$ has a Lebesgue-density and
 \begin{align*}
-\mathds{P}(X \in \mathrm{d}\textbf{x}))=\frac{1}{(2 \pi)^{\frac{d}{2}}} \frac{1}{(det C)^{\frac{1}{2}}} \mathrm{e}^{-\frac{1}{2}(\textbf{x}-\textbf{m},C^{-1}(\textbf{x}-\textbf{m})}~\mathrm{d}\textbf{x}.
+\mathds{P}(X \i n \mathrm{d}\textbf{x}))=\frac{1}{(2 \pi)^{\frac{d}{2}}} \frac{1}{(det C)^{\frac{1}{2}}} \e^{-\frac{1}{2}(\textbf{x}-\textbf{m},C^{-1}(\textbf{x}-\textbf{m})}~\mathrm{d}\textbf{x}.
 \end{align*}
 \end{enumerate}
 \begin{proof}
 \begin{enumerate}[label=\alph*)]
 \item Assume $X,Y$ are $d$-dimensional Gaussian with mean $\textbf{m}$ and covariance matrix $C$.
-Let $a\in \Rd$, $Z=\sum_{i=1}^d a_iX^i$, $W=\sum_{i=1}^d a_i Y^i$.
-Then, $Z,W$ are $1$-dimensional Gaussian with $\mathds{E}(Z)=\mathds{W}=(a,\textbf{m})$ and
+Let $a\i n \Rd$, $Z=\sum_{i=1}^d a_iX^i$, $W=\sum_{i=1}^d a_i Y^i$.
+Then, $Z,W$ are $1$-dimensional Gaussian with $\E{Z}=\mathds{W}=(a,\textbf{m})$ and
 \begin{align}\label{eq:equalityvariance}
 \mathds{V}(Z)=\mathds{V}(W)=(a,Ca)
 \end{align}
 So,
 \begin{align*}
-\varphi_{\textbf{X}}(a)=\mathds{E}\left(\mathrm{e}^{\mathrm{i}(a,X)}\right)=\mathrm{e}^{\mathrm{i}(a,\textbf{m})}\mathrm{e}^{-\frac{1}{2}(a,Ca)}=\varphi_\textbf{Y}(a)
+\varphi_{\textbf{X}}(a)=\E{\e^{\i (a,X)}}=\e^{\i (a,\textbf{m})}\e^{-\frac{1}{2}(a,Ca)}=\varphi_\textbf{Y}(a)
 \end{align*}
-holds for all $a\in\R$ which implies $\textbf{X}\sim \textbf{Y}$.
+holds for all $a\i n\R$ which implies $\textbf{X}\sim \textbf{Y}$.
 \item By \eqref{eq:equalityvariance}, $C$ must be positive semidefinite. If $C$ is invertible, $C$ must be positive definite.
 Hence, the density is well-defined.
 To check that it is the right one, compute its characteristic function (remains as an exercise). \qedhere
@@ -168,45 +167,45 @@ To check that it is the right one, compute its characteristic function (remains 
 %TODO Kasten
 
 \begin{prop}
-Let $X \sim \mathcal{N}(\textbf{m}m,C)$ $d$-dimensional Gaussian, $A \in \R^{n\times d}$.
-Then $AX\sim \mathcal{N}(A\textbf{m},ACA^\ast)$ where $A^\ast$ denotes the transpose of $A$.
+Let $X \sim \N{\textbf{m}}{C}$ $d$-dimensional Gaussian, $A \i n \R^{n\times d}$.
+Then $AX\sim \N{A\textbf{m}}{ACA^\ast}$ where $A^\ast$ denotes the transpose of $A$.
 \begin{proof}
 The proof remains as an exercise.
 \end{proof}
 \end{prop}
 
 \begin{prop}
-Let $\textbf{X}\sim \mathcal{N}(\textbf{m},C)$.
+Let $\textbf{X}\sim \N{\textbf{m}}{C}$.
 Then $X^1,\dots,X^d$ are independent RVs if and only if $C_{ij}=0$ for all $i\not = j$, i.e., $X^i,X^j$ are uncorrelated.
 \begin{proof}
 \glqq $\Rightarrow$\grqq\, always holds (if the variances exist).
-For the other direction let $Y^1,\dots,Y^d$ be independent with $Y^i\sim \mathcal{N}(m_i,C_{ii})$.
+For the other direction let $Y^1,\dots,Y^d$ be independent with $Y^i\sim \N{m_i}{C_{ii}}$.
 Then by (1.13) $\textbf{X} \sim \textbf{Y}$ which implies that $(X^i)$ are independent.
 %TODO label richtig machen
 \end{proof}
 \end{prop}
 
 \begin{defi}
-Let $(X_t)_{t \in T}$ be an $E$-valued SP, defined on a probability space $(\Omega,\mathcal{F},\Prob)$. The set of \emph{finite dimensional distributions (fdd)} of $\textbf{X}$ is the family of probability measures
+Let $(X_t)_{t \i n T}$ be an $E$-valued SP, defined on a probability space $(\Omega,\mathcal{F},\Prob)$. The set of \emph{finite dimensional distributions (fdd)} of $\textbf{X}$ is the family of probability measures
 \begin{align*}
-\{p_{t_1,\dots,t_n}\mid t_1,\dots,t_n, t_i\not =t_j \text{ if } i \not = j,n\in \N\}
+\{p_{t_1,\dots,t_n}\mid t_1,\dots,t_n, t_i\not =t_j \text{ if } i \not = j,n\i n \N\}
 \end{align*}
 where $p_{t_1,\dots,t_n}=\Prob \circ (X_{t_1},\dots,X_{t_n})^{-1}$ is the image of $\Prob$ under $(X_{t_1},\dots,X_{t_n}))$.
-In order words, $p_{t_1,\dots,t_n}(A_1\times \dots \times A_n)=\Prob(X_{t_1}\in A_1,\dots,X_{t_n}\in A_n)$ for all \glqq good\grqq\, sets $A_1,\dots,A_n$
+In order words, $p_{t_1,\dots,t_n}(A_1\times \dots \times A_n)=\Prob(X_{t_1}\i n A_1,\dots,X_{t_n}\i n A_n)$ for all \glqq good\grqq\, sets $A_1,\dots,A_n$
 \end{defi}
 %Kasten
 
 \begin{bsp}
-Let $T=\N$, $E=\Z$ and $(X_n)_{n\in \N}$ a simple random walk, this is to say
+Let $T=\N$, $E=\Z$ and $(X_n)_{n\i n \N}$ a simple random walk, this is to say
 $X_n=\sum_{i=1}^n Z_i$ with $Z_i$ iid, $\Prob(Z_i=\pm 1)=\frac{1}{2}$.
 Then
 \begin{align*}
-p_{1,4,17}(A\times B\times C)=\Prob(X_1\in A,X_4\in B,X_{17}\in C).
+p_{1,4,17}(A\times B\times C)=\Prob(X_1\i n A,X_4\i n B,X_{17}\i n C).
 \end{align*}
 \end{bsp}
 
 \begin{prop}
-Let $\textbf{X}$ be as in (1.16). Then its fdd fulfil the \emph{consistency conditions} that for all $t_1,\dots,t_n \in T$, $C_1,\dots,C_n \in \mathcal{E}$, $\sigma\in S_n$ it holds that
+Let $\textbf{X}$ be as in (1.16). Then its fdd fulfil the \emph{consistency conditions} that for all $t_1,\dots,t_n \i n T$, $C_1,\dots,C_n \i n \mathcal{E}$, $\sigma\i n S_n$ it holds that
 \begin{enumerate}
 \item[(C1)] $p_{t_1,\dots ,t_n}(C_1\times \dots \times C_n)=p_{t_{\sigma(1)},\dots ,t_{\sigma(n)}}(C_{\sigma(1)}\dots ,C_{\sigma(n)})$,
 \item[(C2)] $p_{t_1,\dots , t_n}(C_1\times \dots \times C_{n-1}\times E)=p_{t_1,\dots ,t_{n-1}}(C_1\times \dots \times C_{n-1})$.
@@ -219,16 +218,16 @@ This remains as an easy exercise.
 %TODO 1.16 ordentlich machen
 
 \begin{defi}
-An $\Rd$-valued process $(X_t)_{t \in T}$ is called \emph{Gaussian process} if all its fdd are Gaussian measures.
+An $\Rd$-valued process $(X_t)_{t \i n T}$ is called \emph{Gaussian process} if all its fdd are Gaussian measures.
 \end{defi}
 %Kasten
 
 \begin{bem}
 \begin{enumerate}[label=\alph*)]
 \item Explicitly, $p_{t_1,\dots , t_n}$ is Gaussian on $\R^{dn}$.
-\item (1.10b) shows that there are processes where $X_t$ is Gaussian for all $t\in T$ but where $\textbf{X}$ is not a Gauss process. Take for example $T=\{1,2\}$, $E=\R$, $X_1=X^1,X_2=X^2$ in (1.10).
+\item (1.10b) shows that there are processes where $X_t$ is Gaussian for all $t\i n T$ but where $\textbf{X}$ is not a Gauss process. Take for example $T=\{1,2\}$, $E=\R$, $X_1=X^1,X_2=X^2$ in (1.10).
 Morale: the one-dimensional distributions are not enough to make a process Gaussian!
-\item If $\textbf{X}$ is a Gauss process, its fdd are fully determined by mean function $T \to \Rd, t \mapsto \mathds{E}(X_t)$ and the covariance function $T^2\to \R^{d\times d}, (s,t) \mapsto Cov(X_s,X_t)$.
+\item If $\textbf{X}$ is a Gauss process, its fdd are fully determined by mean function $T \to \Rd, t \mapsto \E{X_t}$ and the covariance function $T^2\to \R^{d\times d}, (s,t) \mapsto Cov(X_s,X_t)$.
 This follows immediately from Theorem 1.13
 %TODO 1.13 ordentlich machen
 %TODO vlt in align machen, dann sieht es schoener aus.
@@ -238,9 +237,9 @@ This follows immediately from Theorem 1.13
 
 \begin{thm}
 \begin{enumerate}[label=\alph*)]
-\item An $\Rd$-valued Brownian motion $\textbf{B}$ is a Gaussian process with $\mathds{E}(B_t)=0$ for all $t$.
+\item An $\Rd$-valued Brownian motion $\textbf{B}$ is a Gaussian process with $\E{B_t}=0$ for all $t$.
 %TODO bereich von t?
-and $Cov(B_s,B_t)=\mathds{E}(B_sB_t)=\min{s,t} \cdot I_{\Rd}$.
+and $Cov(B_s,B_t)=\E{B_sB_t}=\min{s,t} \cdot I_{\Rd}$.
 %TODO da muss noch iwo transposed hin
 \item Conversely, any Gaussian process with the mean and covariance functions from a) is a Brownian motion if it fulfills (B4).
 \end{enumerate}
