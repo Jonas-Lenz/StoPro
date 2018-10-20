@@ -1,0 +1,40 @@
+%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Common sets
+\newcommand{\N}{\mathds{N}} % Natural numbers
+\newcommand{\Z}{\mathds{Z}} % Integers
+\newcommand{\Q}{\mathds{Q}} % Rationals
+\newcommand{\R}{\mathds{R}} % Reals
+% Overwriting a hyperref command
+% We do not know what it would have done
+\renewcommand{\C}{\mathds{C}} % Complex numbers
+\newcommand{\Rd}{{\mathds{R}^d}} % The d-dimensional Euclidean space
+
+% Common constants
+\newcommand{\e}{\mathrm{e}} % Euler's number, exp(1)
+\renewcommand{\i}{\mathrm{i}} % Imaginary unit
+
+% Common notations
+\newcommand{\abs}[1]{\left\vert#1\right\vert} % Absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % Norm
+\newcommand{\Po}{\mathcal{P}} % Powerset
+
+% Stochastical notations
+\DeclareMathOperator{\Cov}{Cov} % Covariance matrix
+\newcommand{\Expectedvalue}{\mathbb{E}} % The “expected value” E
+\newcommand{\E}[1]{\Expectedvalue\left(#1\right)} % Expected value
+\newcommand{\Normaldistribution}{\mathcal{N}} % The “normal distribution” N
+\newcommand{\Ndist}[2]{\Normaldistribution\left(#1,#2\right)} % Normal dist.
+\newcommand{\Prob}{\mathds{P}} % Probability measure
+
+% Environments for definitions, theorems etc.
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[chapter]
+\newtheorem{bsp}[defi]{Example}
+
+\theoremstyle{plain}
+\newtheorem{thm}[defi]{Theorem}
+\newtheorem{lem}[defi]{Lemma}
+\newtheorem{bem}[defi]{Remark}
+\newtheorem{prop}[defi]{Proposition}
+\newtheorem{cor}[defi]{Corollary}
