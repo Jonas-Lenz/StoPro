@@ -122,50 +122,75 @@ Then:
 \end{prop}
 
 \begin{defi}
-A $\Rd$-valued RV $X$ is called \emph{$d$-dimensional Gaussian} if for all linear functionals $L\colon \Rd\to \R$ there exist $m,\sigma^2$ with $LX\sim \Ndist{m}{\sigma^2}$.
-Explicitly: if $X=(X^1,\dots,X^d)$ this means that for all $a_1,\dots,a_d \in \R$ there exist $m,\sigma^2$ such that $\sum_{i=1}^d a_i X^i \sim \Ndist{m}{\sigma^2}$.
+An $\Rd$-valued RV $X$
+is called \defn{$d$-dimensional Gaussian}
+if for all linear functionals $L\colon \Rd\to \R$
+there are $m$, $\sigma^2$ with $LX \sim \Ndist{m}{\sigma^2}$.
+Explicitly:
+If $\X=(X^1,\dots,X^d)$,
+this means that for all $a_1,\dots,a_d \in \R$
+there are $m$, $\sigma^2$
+such that $\sum_{i=1}^d a_i X^i \sim \Ndist{m}{\sigma^2}$.
 \end{defi}
 
 \begin{bsp}
 \begin{enumerate}[label=(\alph*)]
-\item If $X^1,\dots,X^d$ are independent $1$-dimensional Gaussian, then 
-$\textbf{X}=(X^1,\dots,X^d)$ is $d$-dimensional Gaussian.
-\item \emph{Warning:} without independence, this is not true in general.
-Let $X^1\sim \Ndist01$ and
-\begin{align*}
-X^2(\omega)=\begin{cases}
-X^1(\omega),~~&\forall \omega \text{ with } \abs{X^1(\omega)}>1,\\
--X^1(\omega),&\forall \omega \text{ with } \abs{X^1(\omega)}\leq 1.
-\end{cases}
-\end{align*}
-Then, $X^2\sim \Ndist01$ (check it, compute $\mathds{P}(X^2<c)$ for all $c\in \R$), but $(X^1,X^2)$ is not Gaussian as
-$\abs{X^1(\omega)-X^2(\omega)}\leq 2$ for all $\omega \in \Omega$ and
-$\abs{X^1(\omega)-X^2(\omega)}\not \equiv 0$ which implies that $X^1-X^2$ is not Gaussian.
+\item If $X^1,\dots,X^d$ are independent $1$-dimensional Gaussian,
+	then $\textbf{X}=(X^1,\dots,X^d)$ is $d$-dimensional Gaussian.
+\item \emph{Warning:}
+	Without independence, this is not true in general.
+	Consider $X^1\sim \Ndist01$ and
+	\begin{align*}
+	X^2(\omega) = \begin{cases}
+		+X^1(\omega), &\text{if \(\abs{X^1(\omega)}>1\)},\\
+		-X^1(\omega), &\text{if \(\abs{X^1(\omega)}\leq 1\)}.
+	\end{cases}
+	\end{align*}
+	Then, $X^2\sim \Ndist01$
+	(to check this, compute $\mathds{P}(X^2<c)$ for all $c\in \R$)
+	but $(X^1,X^2)$ is not Gaussian as
+	$\abs{X^1(\omega)-X^2(\omega)}\leq 2$ for all $\omega \in \Omega$ and
+	$\abs{X^1(\omega)-X^2(\omega)}\not \equiv 0$,
+	which implies that $X^1-X^2$ is not Gaussian.
 \end{enumerate}
 \end{bsp}
+
+\begin{ex}
+	Are there pairwise independent
+	\(X^1, \dots, X^d \sim \Normaldistribution\)
+	such that \(\X = (X^d, \dots, X^d)\) is not Gaussian?
+\end{ex}
 
 \begin{prop}
 A real RV $X$ is $\Ndist{m}{\sigma^2}$-distributed if and only if
 its characteristic function is given by
 \begin{align}\label{eq:characteristicfunction}
-\varphi_X(u)=\e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}.
+	\varphi_X(u)
+	= \e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}
+	= \exp\autol(\i um - \frac12\sigma^2u^2\autor).
 \end{align}
+
 \begin{proof}
-Recall that $\varphi_X(u)=\E{\e^{\i uX}}$ uniquely determines the distribution of $X$.
-So it is enough to show \eqref{eq:characteristicfunction} if
-$X\sim \Ndist{m}{\sigma^2}$.
-Since $\varphi_{X+m}\E{\e^{\i u(X+m)}}=\e^{\i um}\varphi_X(u)$,
+Recall that $\varphi_X(u) = \E[norm]{\e^{\i uX}}$ uniquely determines
+the distribution of $X$.
+So it is enough to show \eqref{eq:characteristicfunction}
+for $X \sim \Ndist{m}{\sigma^2}$.
+Since we have the regularity
+$\varphi_{X+m}(u) = \E[norm]{\e^{\i u(X+m)}}=\e^{\i um}\varphi_X(u)$,
 it suffices to consider the case $m=0$.
+
 By the Lebesgue differentiation theorem we have
+% FIXME: I do not see these --Peter
 \begin{align*}
 \frac{\mathrm{d}}{\mathrm{d}u}\varphi_X(u)&=\frac{1}{\sqrt{2\pi \sigma^2}} \int \i x\e^{\i ux}\e^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
 &=\frac{1}{\sqrt{2 \pi \sigma^2}} \int \i (\i u \e^{\i ux})\sigma^2 \e^{-\frac{x^2}{2 \sigma^2}}~\mathrm{d}x\\
 &=-u \sigma^2 \varphi_X(u),
 \end{align*}
-and $\varphi_X(0)=1$. Hence, $h(u)=\ln \varphi_X(u)$ solves the ODE
+and $\varphi_X(0)=1$.
+Hence, $h(u)=\ln(\varphi_X(u))$ solves the ODE
 \begin{align*}
-h'(u)&=\frac{\varphi_X'(u)}{\varphi_X(u)}=-u \sigma^2\\
-h(0)=0,
+	h'(u) &= \frac{\varphi_X'(u)}{\varphi_X(u)}=-u \sigma^2\\
+	h(0)  &= 0,
 \end{align*}
 which implies $h(u)=-\frac{1}{2}u^2\sigma^2$.
 \end{proof}

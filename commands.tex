@@ -23,7 +23,7 @@
 % Stochastical notations
 \DeclareMathOperator{\Cov}{Cov} % Covariance matrix
 \newcommand{\Expectedvalue}{\mathbb{E}} % The “expected value” E
-\newcommand{\E}[1]{\Expectedvalue\left(#1\right)} % Expected value
+\newcommand{\E}[2][auto]{\Expectedvalue\argl{#1}(#2\argr{#1})} % Expected value
 \newcommand{\Variance}{\mathbb{V}} % The “variance” V
 \newcommand{\V}[1]{\Variance\left(#1\right)} % Variance
 \newcommand{\Normaldistribution}{\mathcal{N}} % The “normal distribution” N
@@ -36,6 +36,7 @@
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}[chapter]
 \newtheorem{bsp}[defi]{Example}
+\newtheorem{ex}[defi]{Exercise}
 
 \theoremstyle{plain}
 \newtheorem{thm}[defi]{Theorem}
@@ -57,3 +58,11 @@
 
 % Useful commands
 \newcommand*\mailto[1]{\href{mailto:#1}{#1}}
+
+% Technical helpers
+\newcommand*\norml{}
+\newcommand*\normr{}
+\newcommand*\autol{\!\left}
+\newcommand*\autor{\right}
+\newcommand*\argl[1]{\csname #1l\endcsname}
+\newcommand*\argr[1]{\csname #1r\endcsname}
