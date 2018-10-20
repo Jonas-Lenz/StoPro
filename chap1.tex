@@ -1,80 +1,123 @@
 \chapter{Brownian Motion}
 \begin{defi}
-Let $(E,\Sigma)$ be a measurable space and $T$ a set.
-A collection of $(E,\Sigma)$-valued random variables (RVs) $(X_t)_{t\in T}$ is called \emph{$E$-valued stochastic process (SP) with index set $T$}.
+Let $(E, \Sigma)$ be a measurable space and $T$ a set.
+A collection of $(E, \Sigma)$-valued random variables (RVs)
+$\X = (X_t)_{t\in T}$ is called \defn{$E$-valued stochastic process (SP) with index set $T$}.
 \end{defi}
 %TODO Kasten
 
 \begin{bsp}
 \begin{enumerate}[label=(\alph*)]
-\item $(E,\Sigma)=(\Rd,\mathcal{B}(\Rd))$ and $T=\R_{\geq 0}$ then a SP is called \emph{$\Rd$-valued, continuous-time SP},
-\item $(E,\Sigma)=\left(\{-1,1\},\mathcal{P}\left(\{-1,1\}\right)\right)$ and $T=\Z^d$ then a SP is called \glqq spin system\grqq ,
-\item If $E$ is countable and $T=\N_0$, we speak of an \emph{time discrete SP}.
+\item An SP  with $(E, \Sigma) = (\Rd, \Borel(\Rd))$
+	and $T=\R_{\geq 0}$
+	is called \defn{$\Rd$-valued, continuous-time SP}.
+\item For $E = \{-1,1\}$, \(\Sigma = \Po(E)\) and $T=\Z^d$,
+	the SP is called \defn{spin system}.
+\item If $E$ is countable and $T=\N_0$, we speak of a \defn{time discrete SP}.
 \end{enumerate}
 \end{bsp}
 
-\begin{bem}
-From a dynamical point of view, $(X_t)$ is a $t$-dependent quantity that changes with time, this is suitable for the first and third example.
-From a global point of view, a SP is one RV with values in the space $\Omega=E^T=\{f\colon T\to E\}$.
-In the first example this means to consider the whole \emph{path} $(X_t)_{t\geq 0}$ as one object.
-In the second example, one \glqq spin configuration\grqq $\in \{-1,1\}^{\Z^d}$ is an element of $\Omega$.
-Questions: $\sigma$-algebra? Existence?
-\end{bem}
+From a dynamical point of view,
+$X_t$ is a $t$-dependent quantity that changes with time.
+This perspective is suitable for the comprehension of the first and third example.
+From a global point of view,
+an SP is a single RV with values in the space $\Omega=E^T=\{f\colon T\to E\}$.
+In the first example,
+this means to consider the whole \defn{path} $(X_t)_{t\geq 0}$ as one object.
+In the second example,
+each spin configuration in $\{-1,1\}^{\Z^d}$ is an element of $\Omega$.
+This raises some questions:
+What is the “right” $\sigma$-algebra on \(\Omega\)?
+Does it even exist?
 
 \begin{defi}
-Let $\textbf{X}=(X_t)_{t\in T}$ be a SP where the state space $E$ is a group (e.g $E=\Rd$) and $T\subseteq \R$.
-The set $(X_{s,t})_{s,t\in T}$ with $X_{s,t}\coloneqq X_t-X_s$ is called the \emph{increment process of $\textbf{X}$} or \emph{set of increments}.
-A SP has \emph{independent increments} if for all $n\in \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n$ with $s_i,t_i \in T$, the RVs $(X_{s_i,t_i})_{1\leq i \leq n}$ are independent.
-A SP has \emph{stationary increments} if for all $n\in \N$ and all $s_1<t_1\leq s_2 <t_2\leq \dots \leq s_n<t_n, r$ with $s_i,t_i,r \in T$, we have
+Let $\X = (X_t)_{t\in T}$ be an SP
+where the state space $E$ is a group, \eg $E=\Rd$,
+and $T\subseteq \R$.
+The family $(X_{s,t})_{s,t\in T}$ with $X_{s,t}\coloneqq X_t-X_s$
+is called the \defn{increment process of $\X$} or \defn{set of increments}.
+
+An SP has \defn{independent increments}
+if for all $n\in \N$ and all
+$s_1 < t_1 \leq s_2 < t_2 \leq \dots \leq s_n < t_n$
+with $s_i, t_i \in T$,
+the RVs $(X_{s_i,t_i})_{1\leq i \leq n}$ are independent.
+
+An SP has \defn{stationary increments}
+if for all $n\in \N$, all \(r \in T\) and all
+$s_1 < t_1 \leq s_2 < t_2 \leq \dots \leq s_n < t_n$
+with $s_i,t_i \in T$,
+we have
 \begin{align*}
 (X_{s_i,t_i})_{i=1,\dots,n}\sim  (X_{s_i+r,t_i+r})_{i=1,\dots,n},
 \end{align*}
-i.e. equal in distribution. 
+\ie that the increments are equal in distribution
+regardless at which time we started looking.
 \end{defi}
 %TODO Kasten
 
 \begin{defi}
-A $\Rd$-valued SP $\textbf{B}=(B_t)_{t \in \R_{\geq 0}}$ is called \emph{Brownian Motion} (BM) if 
-\begin{enumerate}
-\item[(B0)] $B_0(\omega)=0$ for almost all $w\in \Omega$,
-\item[(B1)] $\textbf{B}$ has independent increments,
-\item[(B2)] $\textbf{B}$ has stationary increments,
-\item[(B3)] $B_t-B_s\eqqcolon B_{s,t}\sim B_{t-s}\sim \Ndist{0}{(t-s)I_d}$
-\item[(B4)] The map $t\mapsto B_t(\omega)$ is continuous for all $\omega \in \Omega$.
+An $\Rd$-valued SP $\B=(B_t)_{t \in \R_{\geq 0}}$
+is called \emph{Brownian Motion} (BM) if
+\begin{enumerate}[label=(B\arabic*)]
+\item $B_0(\omega)=0$ for almost all $w\in \Omega$,
+\item $\B$ has independent increments,
+\item $\B$ has stationary increments,
+\item the increments are normally distributed, \ie
+	\[B_{s,t} \coloneqq B_t - B_s \sim B_{t-s}\sim \Ndist{0}{(t-s)\Id},\]
+	and
+\item the map $t\mapsto B_t(\omega)$ is continuous for all $\omega \in \Omega$.
 \end{enumerate}
 \end{defi}
 %TODO Kasten
 
 \begin{bem}
-Interpretation of (B0)-(B4) in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$.
-\begin{enumerate}
-\item[(B0)] $\int_0^0\xi_s~\mathrm{d}s=0$,
-\item[(B1)] $B_t-B_s=\int_s^t \xi_r~\mathrm{d}r$ and $\xi_r \amalg (\xi_s)_{s\not =r}~~\forall r$
-\item[(B2)] distribution of $\xi_r$ does not depend on $r$,
-\item[(B3)] Central limit theorem and Riemann approximation,
-\item[(B4)] $t\to \int_0^t f_s~\mathrm{d}s$ is continuous for all \glqq sensible\grqq\, functions $f$, in particular for $f=\xi$.
+Checking the requirements (B0)\,--\,(B4)
+in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$:
+\begin{enumerate}[label=(B\arabic*)]
+\item $\int_0^0\xi_s~\mathrm{d}s=0$
+\item $B_t-B_s=\int_s^t \xi_r~\mathrm{d}r$
+	and $\xi_r \amalg (\xi_s)_{s\not =r}~~\forall r$
+% TODO: Is this correct?
+%	and the \(\xi_r\) are independent from each other
+\item The distribution of $\xi_r$ does not depend on $r$.
+\item Central limit theorem and Riemann approximation.
+\item The map $t \mapsto \int_0^t f_s~\mathrm{d}s$ is continuous
+	for all “sensible” functions $f$,
+	in particular for $f = \xi$.
 \end{enumerate}
 \end{bem}
 
 \begin{defi}
-The \emph{Gaussian measure} $\Ndist{m}{\sigma^2}$ with \emph{mean} $m$ and \emph{variance} $\sigma^2$ is the probability measure on
-$(\R,\mathcal{B}(\R))$ with Lebesgue density
+The \defn{Gaussian measure} $\Ndist{m}{\sigma^2}$
+with mean $m$ and variance $\sigma^2$ is
+the probability measure on $(\R,\mathcal{B}(\R))$ with Lebesgue density
 \begin{align*}
-g_{m\sigma^2}(x)=\frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x-m)^2\right).
+	g_{m, \sigma^2}(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x-m)^2\right).
 \end{align*}
 \end{defi}
 
 \begin{prop}
-Let $X\sim \Ndist{m}{\sigma^2}$. Then
+Let $X\sim \Ndist{m}{\sigma^2}$.
+Then:
 \begin{enumerate}[label=(\alph*)]
-\item $\E{X}=m, \mathds{V}(X)=\sigma^2$.
-\item We have the \glqq Gaussian tail estimate\grqq
-\begin{align*}
-\frac{1}{\sqrt{2\pi}} \frac{C}{C^2+1}\e^{-\frac{C^2}{2}}\leq \mathds{P}(X-m\geq C \sigma)\leq \frac{1}{\sqrt{2\pi}} \frac{1}{C}\e^{-\frac{C^2}{2}},
-\end{align*}
-for all $C>0,\sigma>0$.
-\item For $(m_k)_{k\in \N}\subseteq \R$, $m\in \R$, $(\sigma_k)_{k\in \N}\subseteq \R_{\geq 0}$, $\sigma\in \R_{\geq 0}$ we have:
-$m_k\to m$ and $\sigma_k\to \sigma$ if and only if $\Ndist{m_k}{\sigma_k^2}\overset{\text{d}}{\to} \Ndist{m}{\sigma^2}$.
+\item $\E{X } =m$, $\V{X} = \sigma^2$
+\item We have the \defn{Gaussian tail estimate}
+	% TODO: Refactor terms?
+	\begin{align*}
+	\frac{1}{\sqrt{2\pi}} \frac{C}{C^2+1}\e^{-\frac{C^2}{2}}
+	\leq
+	\mathds{P}(X-m\geq C \sigma)
+	\leq
+	\frac{1}{\sqrt{2\pi}} \frac{1}{C}\e^{-\frac{C^2}{2}},
+	\end{align*}
+	for all $C>0$, $\sigma>0$.
+\item For $(m_k)_{k\in \N}\subseteq \R$, $m\in \R$,
+	$(\sigma_k)_{k\in \N}\subseteq \R_{\geq 0}$ and $\sigma\in \R_{\geq 0}$
+	we have that
+	$(m_k, \sigma_k) \to (m, \sigma)$
+	if and only if
+	$\Ndist{m_k}{\sigma_k^2} \distto  \Ndist{m}{\sigma^2}$.
 \end{enumerate}
 \end{prop}
 

@@ -1,37 +1,57 @@
-\chapter*{Motivation and Planned Topics}
-Laws of nature are encoded by differential equations: ODEs, e.g. classical mechanics 
+\chapter{Motivation and Planned Topics}
+Laws of nature are encoded by differential equations.
+Some are encoded by ODEs, \eg classical mechanics
 \begin{align*}
 \partial_t^2 x(t)=-a(x(t))\partial_t x(t)+F(t,x(t))
 \end{align*}
-where $a$ is a friction coefficients and $F$ describes the force,
-or PDEs e.g. electrodynamics or quantum mechanics.
-The aim of this course is to describe ODEs with noise, for example with random force.
+where $a$ is a friction coefficients and $F$ describes the force.
+Others by PDEs, \eg electrodynamics or quantum mechanics.
+The aim of this course is to describe ODEs with noise,
+for example with random force.
 The simplest form of an ODE is
 \begin{align}\label{eq:simpleform}
 \partial_t X_t=b(t,X_t)+\sigma(t,X_t)\xi_t
 \end{align}
-where $b$ is a deterministic force (drift), $\sigma$ denotes the diffusion coefficient (tells how important the noise is) and as the most important part
-$\xi_t$ is the white noise.
-First question: what noise?
-The \glqq natural\grqq\, approach is a random Fourier series:
-\begin{align}
-\xi_t^{(N)}\coloneqq \sum_{k=0}^N Y_k \cos(kt)+ \sum_{k=1}^N Z_k \sin(kt)~~~t\in [0,2\pi)
-\end{align}
-with $Y_k,Z_k \sim \mathcal{N}(0,1)$.
-The limit $\lim\limits_{N\to \infty} \xi_t^{(N)}$ does \emph{not} exist and is called \glqq white noise\grqq.
-Nevertheless, it exists as a tempered distributions.
-A possible solution might be to integrate in time to improve convergence. For this we define
-\begin{align}
-B_t^{(N)}\coloneqq \int_0^t\xi_s^{(N)}~\mathrm{d}s=tY_0+\sum_{k=1}^N \frac{1}{k}(Y_k\sin(kt)-Z_k(\cos(kt)-1)).
-\end{align}
-Soon, we will see that this limit exists. It is called \glqq Brownian motion\grqq.
-Assume in \eqref{eq:simpleform} that $\sigma(t,y)\equiv \sigma_0$ is constant. Then we can compute
+where $b$ is a deterministic force (drift),
+$\sigma$ denotes the diffusion coefficient (tells how important the noise is)
+and as the most important part $\xi_t$ is the white noise.
+
+\section{First Question: What Noise?}
+
+The “natural” approach is a random Fourier series:
 \begin{align*}
-X_t-X_0=\int_0^t \partial_s X_s~\mathrm{d}s\overset{\eqref{eq:simpleform}}{=}\int_0^t b(s,X_s)~\mathrm{d}s+\sigma_0 B_t.
+\xi_t^{(N)}\coloneqq \sum_{k=0}^N Y_k \cos(kt)+ \sum_{k=1}^N Z_k \sin(kt)
+\quad\text{for}\quad
+t\in [0, 2\pi)
+\end{align*}
+with $Y_k,Z_k \sim \mathcal{N}(0,1)$.
+The limit $\lim\limits_{N\to \infty} \xi_t^{(N)}$ does \emph{not} exist\footnote{
+	The limit exists as a tempered distribution
+	but not as an integrable function.
+}
+and is called “white noise”.
+
+\section{Second Question: Can we fix this?}
+A possible solution might be to integrate in time to improve convergence.
+For this, we define
+\begin{align*}
+	B_t^{(N)} \coloneqq \int_0^t\xi_s^{(N)}~\mathrm{d}s
+	=t Y_0+\sum_{k=1}^N \frac{1}{k}(Y_k\sin(kt)-Z_k(\cos(kt)-1)).
+\end{align*}
+Soon, we will see that this limit exists.
+It is called “Brownian motion”.
+Assume in \eqref{eq:simpleform} that $\sigma(t,y) \equiv \sigma_0$ is constant.
+Then we can compute
+\begin{align*}
+	X_t-X_0 = \int_0^t \partial_s X_s~\mathrm{d}s
+	\overset{\eqref{eq:simpleform}}{=}
+	\int_0^t b(s,X_s)~\mathrm{d}s+\sigma_0 B_t.
 \end{align*}
 This equation at least makes sense but we don't know whether we can solve it.
 If $\sigma$ is not constant, a term $\int_0^t\sigma(s,X_s)\xi_s~\mathrm{d}s$ appears.
 In order to give sense to this integral, we will introduce It\^o-integrals or rough integrals.
 
-\section*{Literature}
-Schilling/Partsch: \glqq Brownian Motion\grqq
+\section{Third Question: What to read?}
+Apart from these fabulous lecture notes,
+the book “Brownian Motion” by Schilling and Partsch
+was recommended.

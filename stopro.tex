@@ -1,50 +1,85 @@
-\documentclass[12pt,a4paper,twoside]{scrreprt}
+\documentclass{scrbook}
 
-\include{pakete}
+%%% Sane encodings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
+%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{packages}
 
-\include{befehle}
+%%% Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create an index
+\usepackage{makeidx}
+\makeindex
 
-%FARBEN
-\newcommand{\red}[1]{\textcolor{red}{#1}}
+\hypersetup{
+	% Encode PDF strings in Unicode, not ASCII
+	unicode,
+}
 
+% Enable automatic page breaks in display math
+% Note: Not everyone agrees that this is a good idea
+\allowdisplaybreaks
+
+% All graphics should be in img/
+\graphicspath{{img/}}
+
+%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{commands}
+
+%%% Looks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\KOMAoption{fontsize}{12pt}
+\KOMAoption{paper}{A4}
+\KOMAoption{parskip}{half}
+\KOMAoption{twoside}{true}
+
+% Do not number sections and do not put them into the table of contents
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{0}
+
+% The length is the binding correction,
+% i.e. the amount of paper lost when binding the printed version
+% TODO: Set a reasonable BCOR
+\typearea[0cm]{calc}
+
+\hypersetup{
+	% Do not draw boxes around links, colour them
+	colorlinks,
+}
+
+%%% Metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Stochastic Processes}
+\author{Jonas Lenz}
+\makeatletter
+\hypersetup{
+	pdfauthor=\@author,
+	pdftitle=\@title,
+}
+\makeatother
 
 \begin{document}
-\pagenumbering{roman}
-\hypersetup{pageanchor=false}
-\begin{titlepage}
-  \begin{center}
-    \vspace{1cm}
-    \includegraphics[width=0.5\linewidth]{TU_Darmstadt_Logo.pdf}
-    \vspace{1cm}
-    
-    \large{Fachbereich Mathematik}
-    \vspace{3.5cm}
-    
-    \Huge{\textbf{Stochastic Processes}\\}
-    \vspace*{0.5cm}    
-    \Large{{Winter Term 2018/2019}\\}
-    \vspace*{0.5cm}    
-    \small{Lecture held by Prof. Volker Betz\\}
-    \vspace*{1.0cm}
-    \small{Typeset in \LaTeX\ by Jonas Lenz\\}
-    \small{Errors can be reported at: \href{mailto:jlenz@mathematik.tu-darmstadt.de}{jlenz@mathematik.tu-darmstadt.de}}
+\frontmatter
+\pagenumbering{Roman}
+\include{titlepage}
 
-    \vspace*{\fill}
-    \small{Version of \today}
-  \end{center}
-\end{titlepage}
-
-\hypersetup{pageanchor=true}
-\pagenumbering{arabic}
+\cleardoublepage
 \tableofcontents
-%\pagestyle{heading}
+
 \include{motivation}
+
+\mainmatter
+\pagenumbering{arabic}
+
+\cleardoublepage
 \include{chap1}
 %\include{chap2}
 %\include{chap3}
 %\include{chap4}
 %\include{chap5}
 
-\end{document}
+\backmatter
+\clearpage
+\addcontentsline{toc}{chapter}{\indexname}
+\printindex
 
+\end{document}
