@@ -61,9 +61,11 @@ An $\Rd$-valued SP $\B=(B_t)_{t \in \R_{\geq 0}}$
 is called \emph{Brownian Motion} (BM) if
 \begin{enumerate}[label=(B\arabic*)]
 \item $B_0(\omega)=0$ for almost all $w\in \Omega$,
-\item $\textbf{B}$ has independent increments,
-\item $\textbf{B}$ has stationary increments,
-\item $B_t-B_s\eqqcolon B_{s,t}\sim B_{t-s}\sim \Ndist{0}{(t-s)\Id}$ and
+\item $\B$ has independent increments,
+\item $\B$ has stationary increments,
+\item the increments are normally distributed, \ie
+	\[B_{s,t} \coloneqq B_t - B_s \sim B_{t-s}\sim \Ndist{0}{(t-s)\Id},\]
+	and
 \item the map $t\mapsto B_t(\omega)$ is continuous for all $\omega \in \Omega$.
 \end{enumerate}
 \end{defi}
