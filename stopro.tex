@@ -1,14 +1,57 @@
 \documentclass[12pt,a4paper,twoside]{scrreprt}
 
-\include{pakete}
+%%% Sane encodings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
+%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{packages}
 
+%%% Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create an index
+\usepackage{makeidx}
+\makeindex
+
+\hypersetup{
+	% Encode PDF strings in Unicode, not ASCII
+	unicode,
+}
+
+% Enable automatic page breaks in display math
+% Note: Not everyone agrees that this is a good idea
+\allowdisplaybreaks
+
+%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{commands}
 
+%%% Looks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\KOMAoption{fontsize}{12pt}
+\KOMAoption{paper}{A4}
+\KOMAoption{parskip}{half}
+\KOMAoption{twoside}{true}
+
+% The length is the binding correction,
+% i.e. the amount of paper lost when binding the printed version
+% TODO: Set a reasonabl BCOR
+\typearea[0cm]{calc}
+
+\hypersetup{
+	% Do not draw boxes around links, colour them
+	colorlinks,
+}
+
+%%% Metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Stochastic Processes}
+\author{Jonas Lenz}
+\makeatletter
+\hypersetup{
+	pdfauthor=\@author,
+	pdftitle=\@title,
+}
+\makeatother
 
 \begin{document}
-\pagenumbering{roman}
-\hypersetup{pageanchor=false}
+\pagenumbering{Roman}
 \begin{titlepage}
   \begin{center}
     \vspace{1cm}
@@ -32,10 +75,12 @@
   \end{center}
 \end{titlepage}
 
-\hypersetup{pageanchor=true}
-\pagenumbering{arabic}
+\cleardoublepage
 \tableofcontents
-%\pagestyle{heading}
+
+\cleardoublepage
+\pagenumbering{arabic}
+
 \include{motivation}
 \include{chap1}
 %\include{chap2}
@@ -44,4 +89,3 @@
 %\include{chap5}
 
 \end{document}
-
