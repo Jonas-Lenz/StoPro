@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,twoside]{scrreprt}
+\documentclass{scrbook}
 
 %%% Sane encodings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc}
@@ -54,6 +54,7 @@
 \makeatother
 
 \begin{document}
+\frontmatter
 \pagenumbering{Roman}
 \begin{titlepage}
   \begin{center}
@@ -81,14 +82,21 @@
 \cleardoublepage
 \tableofcontents
 
-\cleardoublepage
+\include{motivation}
+
+\mainmatter
 \pagenumbering{arabic}
 
-\include{motivation}
+\cleardoublepage
 \include{chap1}
 %\include{chap2}
 %\include{chap3}
 %\include{chap4}
 %\include{chap5}
+
+\backmatter
+\clearpage
+\addcontentsline{toc}{chapter}{\indexname}
+\printindex
 
 \end{document}
