@@ -33,6 +33,8 @@
 \newcommand{\distto}{\overset{\text{d}}{\to}} % Convergence in distribution
 
 % Environments for definitions, theorems etc.
+% All of these are numbered together within each chapter
+\swapnumbers % Numbers in front, e.g. “1.4 Theorem” instead of “Theorem 1.4”
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}[chapter]
 \newtheorem{bsp}[defi]{Example}
@@ -40,10 +42,11 @@
 
 \theoremstyle{plain}
 \newtheorem{thm}[defi]{Theorem}
-\newtheorem{lem}[defi]{Lemma}
-\newtheorem{bem}[defi]{Remark}
 \newtheorem{prop}[defi]{Proposition}
+\newtheorem{lem}[defi]{Lemma}
 \newtheorem{cor}[defi]{Corollary}
+
+\newtheorem{bem}[defi]{Remark}
 
 % Texty abbreviations
 \newcommand*\eg{e.g.\ }
