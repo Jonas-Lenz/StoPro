@@ -2,3 +2,4 @@ vektoren sollen fett sein, zumindest wenn es iwas mit zufall zu tun hat
 klammern müssen überall noch richtig gross gemacht werden
 labels ordentlichen machen (nummerierung eins runtersetzen)
 komma und matheumgebungen trennen
+\top for all transposed vectors
