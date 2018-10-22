@@ -283,9 +283,155 @@ This follows immediately from Theorem 1.13
 \begin{enumerate}[label=(\alph*)]
 \item An $\Rd$-valued Brownian motion $\textbf{B}$ is a Gaussian process with $\E{B_t}=0$ for all $t$.
 %TODO bereich von t?
-and $\Cov(B_s,B_t)=\E{B_sB_t^\ast}=\min\{s,t\} \cdot I_{\Rd}$.
+and 
+\begin{align*}
+Cov(B_s,B_t)=\E{B_s\otimes B_t}=\E{\left(B_s^iB_t^j\right)_{i,j=1,\dots,d}}=\min\{s,t\} \cdot I_{\Rd}
+\end{align*}
 %TODO da muss noch iwo transposed hin, hier sollte es richtig sein
 \item Conversely, any Gaussian process with the mean and covariance functions from a) is a Brownian motion if it fulfills (B4).
 \end{enumerate}
+\begin{proof}
+\begin{enumerate}[label=\alph*)]
+\item Let $t_1,\dots,t_n\in \R_0^+$ with $t_1<\dots<t_n$. Then
+\begin{align*}
+\left(B_{t_1}(\omega),\dots,B_{t_n}(\omega)\right)^t=\\
+A\left(B_{t_1}(\omega)-B_0(\omega),B_{t_2}(\omega)-B_{t_1}(\omega),\dots,B_{t_n}(\omega)-B_{t_{n-1}}(\omega)\right)^t
+\end{align*}
+%TODO transponiert ordentlichen machen
+where $A$ denotes the \glqq right\grqq\, matrix.
+%%TODO ones on lower half
+By (B1),(B3) and (1.9), $(B_{t_i}-B_{t_{i-1}})_{1 \leq i \leq n}\sim \Ndist{0}{C}$
+with $C_{ij}=\delta_{ij}(t_i-t_{i-1})$.
+By (1.13), $p_{t_1,\dots,t_n}\sim \Ndist{0}{ACA^\ast}$ which implies that $\textbf{B}$ is a Gaussian process.
+Now, we compute the covariance and assume $s<t$. Then we have
+\begin{align*}
+\Cov(B_s,B_t)&=\E{B_s\otimes B_t}=\E{B_s\otimes (B_t-B_s)} + \E{B_s \otimes B_s}\\
+&=s \Id=\min\{s,t\}\Id.
+\end{align*}
+\item We check that (B0)-(B2) hold, as (B3),(B4) holdn by assumption.
+(B0) follows from $\V{B_0}=0$ and $\E{B_0}=0$.
+For (B1) and (B2) let $0<t_1<\dots<t_n$.
+The covariance matrix $(B_{t_1},\dots,B_{t_n})$ is
+\begin{align*}
+M
+\end{align*}
+and with $A$ as in a), $A^{-1}=$.
+Then, $(B_{t_1}-B_0,B_{t_2}-B_{t_1},\dots,B_{t_n}-B_{t_{n-1}})$ has covariance matrix
+\begin{align*}
+M'=A^{-1}M\left(A^{-1}\right)^\ast=
+\end{align*}
+which implies that (B1) and (B2) holds. \qedhere
+\end{enumerate}
+\end{proof}
 \end{thm}
 %Kasten
+
+\begin{prop}
+Let $\textbf{B}^1$,\dots,$\textbf{B}^d$ be $1$-dimensional Brownian motions and
+let the $(\textbf{B}^i)_{i=1,\dots,d}$ be independent (as stochastic processes).
+Then $\left(B_t^1,\dots,B_t^d\right)_{t\geq 0}$ is a $d$-dimensional Brownian motion.
+Conversely, the coordinate processes $\left(B_t^i\right)_{t \geq 0}$ of a $d$-dimensional Brownian motion are independent $1$-dimensional Brownian motions.
+\begin{proof}
+This is remains as an exercise or can be found in Section 2.3 of Schilling/Partzsch.
+\end{proof}
+\end{prop}
+
+\begin{prop}
+Let $\textbf{B}$ be a $1$-dimensional Brownian motion. Then its fdd are given by
+\begin{align}
+p_{t_1,\dots ,t_n}(A_1\times \dots \times A_n) = \Prob\left(B_{t_1\in A_1,\dots,B_{t_n}\in A_n}  \right) \nonumber \\
+=\frac{1}{(2\pi)^{\frac{n}{2}}}\frac{1}{\left[\prod_{j=1}^n(t_j-t_{j-1})\right]} \int_{A_1\times \dots \times A_n} \exp\left(-\frac{1}{2}\sum_{j=1}^n \frac{(x_j-x_{j-1})^2}{t_j-t_{j-1}}\right)~\mathrm{d}x
+\end{align}
+%TODO gleichung iwie schoen machen
+for all $0=t_0<t_1<\dots < t_n$, $A_1, \dots , A_n \in  \Borel(\R), n\in \N$ with $x_0=0$ and $x=(x_1,\dots , x_n)$.
+\begin{proof}
+Referring to Thm 1.20 this remains as an exercise.
+\end{proof}
+\end{prop}
+
+\begin{prop}
+The family of fdd given in the previous proposition is consistent in the sense of (1.17),(C1) and (C2).
+%TODO label hinmachen
+\end{prop}
+
+So, Brownian motions have a chance to exist. We now that it does. Nevertheless, this will take a while.
+
+\begin{defi}
+Let $(E,\mathcal{E})$ be a measurable space and $T$ a set.
+\begin{enumerate}[label=\roman*)]
+\item The map 
+\begin{align*}
+pi_t&\colon E^T\to E\\
+(e_s)_{s\in T} &\mapsto e_t
+\end{align*}
+is called \emph{coordinate projection} to the $t$-th coordinate.
+When we identify $E^T$ with $\{f \colon T \to E\}$ then $\pi_t(e)=e_t$ is the point evaluation of the function $e$ at point $t$.
+\item The $\sigma$-algebra $\mathcal{E}^{\otimes T}$ is the smalles $\sigma$-algebra on $E^T$ so that all maps $\pi_t$ are $\mathcal{E}^{\otimes T}$-$\mathcal{E}$-measurable.
+\item The measurable space $(E^T,\mathcal{E}^{\otimes T})$ is the \emph{canonical space} for $E$ valued stochastic processes with index set $T$.
+\item If $\Omega_0\subset E^T$ is any subset (not necessarily measurable), the $\sigma$-algebra
+\begin{align*}
+\mathcal{E}^{\otimes T}\cap \Omega_0 \coloneqq \{A \cap \Omega_0 \colon A \in \mathcal{E}^{\otimes T}\}
+\end{align*}
+is called the \emph{trace} of $\mathcal{E}^{\otimes T}$ on $\Omega_0$.
+The measurable space $(\Omega_0,\mathcal{E}^{\otimes T}\cap \Omega_0)$
+is the canonical space for $E$-valued process with sample paths in $\Omega_0$.
+\end{enumerate}
+\end{defi}
+
+\begin{bsp}
+$E=\Rd$, $T=\R_0^+$ and $\Omega=E^T=\{\omega \colon \R_0^+ \to \Rd\}$,
+$\pi_t(\omega)=\omega(t)$, $\Omega$=space of all \glqq paths\grqq\, $t \to \omega(t)$.
+Write $X_t(\omega)=\pi_t(\omega)=\omega(t)$.
+We consider $\Omega \cap C_0(\Rd)=\{\omega \in C(\R_0^+,\Rd), \omega(0)=0\}$ and $\mathcal{F}=\Borel(\Rd)^{\otimes \R_0^+} \cap C_0(\Rd)$.
+Then $(C_0(\Rd),\mathcal{F})$ is the canonical measurable space for a stochastic process with continuous paths.
+\end{bsp}
+%TODO improve language here, find right C for continouous fcts.
+
+\begin{bem}
+The metric of \emph{local uniform convergence} on $C_0(\Rd)$ is given by 
+\begin{align*}
+\rho &\colon C_0\times C_0 \to \R_0^+\\
+(f,g) &\mapsto \sum_{n=1}^\infty \min\{1,\sup_{0\leq t \leq n}\abs{f(t)-g(t)}\} 2^{-n}. 
+\end{align*}
+The Borel-$\sigma$-algebra $\Borel(C_0)$ on $C_0$ is the smallest $\sigma$-algebra on $C_0$ such that all $\rho$-open sets are measurable.
+We have $\Borel(C_0)=\Borel(\Rd)^{\otimes \R_0^+}\cap C_0$.
+\begin{proof}
+This remains as an exercise.
+\end{proof}
+\end{bem}
+
+\begin{lem}
+Let $(E,\mathcal{E})$ be a measurable space, $T$ a set and $A \subset E^T$. Then $A \in \mathcal{E}^{\otimes T}$ if and only if there exists $I\subseteq T$ countable with $A \in \{\pi_t\colon t\in I\}$.
+\begin{proof}
+This remains as a proof (on some exercise sheet).
+\end{proof}
+\end{lem}
+%important
+Recall the following:
+\begin{thm}[Thm 3.29 from Probability Theory, Winter Term 17/18]
+Let $(\Omega,\mathcal{F})$ be a Borel space and $\Prob$ a probability measure on $(\Omega,\mathcal{F})$.
+Then for each $\sigma$-algebra $\mathcal{G} \subseteq \mathcal{F}$, a map
+$\mu \colon \Omega \times \mathcal{F} \to [0,1]$ with the properties
+\begin{enumerate}[label=(\roman*)]
+\item $\mu(\cdot,A)$ is $\mathcal{F}$-measurable for all $A \in \mathcal{F}$
+\item $\mu(\omega,\cdot)$ is a probability measure for all $\omega \in \Omega$
+\item Moreover, $\mu(\omega,\cdot)$ is a conditional probability of $A$ given $\mathcal{G}$, \ie $\mu(\omega,A)=\Prob(A\mid \mathcal{G})(\omega)$ for $\Prob$-almost all $\omega \in \Omega$.
+\end{enumerate}
+exists. $\mu$ is called \emph{regular conditional probability}.
+\begin{proof}
+Will be uploaded in the notes (to be done later).
+\end{proof}
+\end{thm}
+
+\begin{lem}
+Let $(\Omega,\mathcal{F})$ be a Borel space, $\mu \colon \Omega \times \mathcal{F} \to [0,1]$ with properties (1.28)(i),(ii) [called a \emph{probability kernel}].
+Then there exists a $\mathcal{U}[0,1]$-RV $Y$ and an $\mathcal{F} \otimes \Borel([0,1])$-measurable function
+$f \colon \Omega \times [0,1] \to \Omega$ with
+\begin{align*}
+\mu(\omega,A)=\Prob(f(\omega,Y)\in A)= \int_0^1 \mathds{1}_{\{f(\omega,\cdot) \in A\}}(u)~\mathrm{d}u
+\end{align*}
+for all $\omega \in \Omega$, $A \in \mathcal{F}$.
+\begin{proof}
+This remains as an exercise or can be found in Kallenberg [Foundations of Modern Probability, 3.22].
+\end{proof}
+\end{lem}
