@@ -14,6 +14,7 @@ $\X = (X_t)_{t\in T}$ is called \defn{$E$-valued stochastic process (SP) with in
 \item For $E = \{-1,1\}$, \(\Sigma = \Po(E)\) and $T=\Z^d$,
 	the SP is called \defn{spin system}.
 \item If $E$ is countable and $T=\N_0$, we speak of a \defn{time discrete SP}.
+\qedhere
 \end{enumerate}
 \end{bsp}
 
@@ -67,6 +68,7 @@ is called \emph{Brownian Motion} (BM) if
 	\[B_{s,t} \coloneqq B_t - B_s \sim B_{t-s}\sim \Ndist{0}{(t-s)\Id},\]
 	and
 \item the map $t\mapsto B_t(\omega)$ is continuous for all $\omega \in \Omega$.
+\qedhere
 \end{enumerate}
 \end{defi}
 %TODO Kasten
@@ -85,6 +87,7 @@ in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$:
 \item The map $t \mapsto \int_0^t f_s~\mathrm{d}s$ is continuous
 	for all “sensible” functions $f$,
 	in particular for $f = \xi$.
+\qedhere
 \end{enumerate}
 \end{bem}
 
@@ -93,7 +96,8 @@ The \defn{Gaussian measure} $\Ndist{m}{\sigma^2}$
 with mean $m$ and variance $\sigma^2$ is
 the probability measure on $(\R,\mathcal{B}(\R))$ with Lebesgue density
 \begin{align*}
-	g_{m, \sigma^2}(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x-m)^2\right).
+	g_{m, \sigma^2}(x) &= \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{1}{2\sigma^2}(x-m)^2\right).
+	\qedhere
 \end{align*}
 \end{defi}
 
@@ -118,6 +122,7 @@ Then:
 	$(m_k, \sigma_k) \to (m, \sigma)$
 	if and only if
 	$\Ndist{m_k}{\sigma_k^2} \distto  \Ndist{m}{\sigma^2}$.
+\qedhere
 \end{enumerate}
 \end{prop}
 
@@ -152,6 +157,7 @@ such that $\sum_{i=1}^d a_i X^i \sim \Ndist{m}{\sigma^2}$.
 	$\abs{X^1(\omega)-X^2(\omega)}\leq 2$ for all $\omega \in \Omega$ and
 	$\abs{X^1(\omega)-X^2(\omega)}\not \equiv 0$,
 	which implies that $X^1-X^2$ is not Gaussian.
+\qedhere
 \end{enumerate}
 \end{bsp}
 
@@ -164,17 +170,18 @@ such that $\sum_{i=1}^d a_i X^i \sim \Ndist{m}{\sigma^2}$.
 \begin{prop}
 A real RV $X$ is $\Ndist{m}{\sigma^2}$-distributed if and only if
 its characteristic function is given by
-\begin{align}\label{eq:characteristicfunction}
+\begin{align*}
 	\varphi_X(u)
-	= \e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}
+	&\overset*= \e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}
 	= \exp\autol(\i um - \frac12\sigma^2u^2\autor).
-\end{align}
+\qedhere
+\end{align*}
 \end{prop}
 
 \begin{proof}
 Recall that $\varphi_X(u) = \E[norm]{\e^{\i uX}}$ uniquely determines
 the distribution of $X$.
-So it is enough to show \eqref{eq:characteristicfunction}
+So it is enough to show (\(*\))
 for $X \sim \Ndist{m}{\sigma^2}$.
 Since we have the regularity
 $\varphi_{X+m}(u) = \E[norm]{\e^{\i u(X+m)}}=\e^{\i um}\varphi_X(u)$,
@@ -197,7 +204,7 @@ which implies $h(u)=-\frac{1}{2}u^2\sigma^2$.
 \end{proof}
 
 \begin{cor}
-For $X \sim \Ndist{0}{\sigma^2}$ and $J\in \C$ we have $\E{\e^{JX}})=\e^{\sigma^2 \frac{J^2}{2}}$.
+For $X \sim \Ndist{0}{\sigma^2}$ and $J\in \C$ we have $\E{\e^{JX}}=\e^{\sigma^2 \frac{J^2}{2}}$.
 \end{cor}
 \begin{proof}
 This follows by analytic continuation of the previous proposition.
@@ -210,7 +217,9 @@ Let $X$ be $d$-dimensional Gaussian.
 We write $X \sim \Ndist{\textbf{m}}{C}$.
 \item If $C$ is invertible, then the distribution of $X$ has a Lebesgue-density and
 \begin{align*}
-\mathds{P}(X \in \mathrm{d}\textbf{x}))=\frac{1}{(2 \pi)^{\frac{d}{2}}} \frac{1}{(\det C)^{\frac{1}{2}}} \e^{-\frac{1}{2}(\textbf{x}-\textbf{m},C^{-1}(\textbf{x}-\textbf{m}))}~\mathrm{d}\textbf{x}.
+	\mathds{P}(X \in \mathrm{d}\textbf{x})
+	&= \frac{1}{(2 \pi)^{\frac{d}{2}}} \frac{1}{(\det C)^{\frac{1}{2}}} \e^{-\frac{1}{2}(\textbf{x}-\textbf{m},C^{-1}(\textbf{x}-\textbf{m}))}~\mathrm{d}\textbf{x}.
+\qedhere
 \end{align*}
 \end{enumerate}
 \end{thm}
@@ -237,10 +246,10 @@ To check that it is the right one, compute its characteristic function (remains 
 \begin{prop}
 Let $X \sim \Ndist{\textbf{m}}{C}$ $d$-dimensional Gaussian, $A \in \R^{n\times d}$.
 Then $AX\sim \Ndist{A\textbf{m}}{ACA^\ast}$ where $A^\ast$ denotes the transpose of $A$.
+\end{prop}
 \begin{proof}
 The proof remains as an exercise.
 \end{proof}
-\end{prop}
 
 \begin{prop}
 Let $\textbf{X}\sim \Ndist{\textbf{m}}{C}$.
@@ -270,6 +279,7 @@ $X_n=\sum_{i=1}^n Z_i$ with $Z_i$ iid, $\Prob(Z_i=\pm 1)=\frac{1}{2}$.
 Then
 \begin{align*}
 p_{1,4,17}(A\times B\times C)=\Prob(X_1\in A,X_4\in B,X_{17}\in C).
+\qedhere
 \end{align*}
 \end{bsp}
 
@@ -278,6 +288,7 @@ Let $\textbf{X}$ be as in (1.16). Then its fdd fulfil the \emph{consistency cond
 \begin{enumerate}
 \item[(C1)] $p_{t_1,\dots ,t_n}(C_1\times \dots \times C_n)=p_{t_{\sigma(1)},\dots ,t_{\sigma(n)}}(C_{\sigma(1)}\dots ,C_{\sigma(n)})$,
 \item[(C2)] $p_{t_1,\dots , t_n}(C_1\times \dots \times C_{n-1}\times E)=p_{t_1,\dots ,t_{n-1}}(C_1\times \dots \times C_{n-1})$.
+\qedhere
 \end{enumerate}
 \end{prop}
 %Kasten
@@ -300,6 +311,7 @@ Morale: the one-dimensional distributions are not enough to make a process Gauss
 This follows immediately from Theorem 1.13
 %TODO 1.13 ordentlich machen
 %TODO vlt in align machen, dann sieht es schoener aus.
+\qedhere
 \end{enumerate}
 \end{bem}
 %TODO 1.10 ordentlich machen
@@ -314,6 +326,7 @@ Cov(B_s,B_t)=\E{B_s\otimes B_t}=\E{\left(B_s^iB_t^j\right)_{i,j=1,\dots,d}}=\min
 \end{align*}
 %TODO da muss noch iwo transposed hin, hier sollte es richtig sein
 \item Conversely, any Gaussian process with the mean and covariance functions from a) is a Brownian motion if it fulfills (B4).
+\qedhere
 \end{enumerate}
 \end{thm}
 %Kasten
