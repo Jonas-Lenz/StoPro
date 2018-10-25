@@ -24,9 +24,6 @@
 % All graphics should be in img/
 \graphicspath{{img/}}
 
-%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{commands}
-
 %%% Looks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \KOMAoption{fontsize}{12pt}
 \KOMAoption{paper}{A4}
@@ -46,6 +43,19 @@
 	% Do not draw boxes around links, colour them
 	colorlinks,
 }
+
+\newtheoremstyle                   % Define a new theorem style…
+	[$\lozenge$]                % …ending with a lozenge
+	{default}                   % Gonna use it a lot
+	{}{}                        % Use default vspace
+	{\upshape}                  % Set text upright
+	{}                          % Do not indent
+	{\usekomafont{disposition}} % The head is essentially a heading
+	{:}{1em}                   % Separation after the head
+	{}                          % Default head spec
+
+%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{commands}
 
 %%% Metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Stochastic Processes}

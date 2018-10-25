@@ -169,6 +169,7 @@ its characteristic function is given by
 	= \e^{\i um}\e^{-\frac{1}{2}\sigma^2u^2}
 	= \exp\autol(\i um - \frac12\sigma^2u^2\autor).
 \end{align}
+\end{prop}
 
 \begin{proof}
 Recall that $\varphi_X(u) = \E[norm]{\e^{\i uX}}$ uniquely determines
@@ -194,14 +195,13 @@ Hence, $h(u)=\ln(\varphi_X(u))$ solves the ODE
 \end{align*}
 which implies $h(u)=-\frac{1}{2}u^2\sigma^2$.
 \end{proof}
-\end{prop}
 
 \begin{cor}
 For $X \sim \Ndist{0}{\sigma^2}$ and $J\in \C$ we have $\E{\e^{JX}})=\e^{\sigma^2 \frac{J^2}{2}}$.
+\end{cor}
 \begin{proof}
 This follows by analytic continuation of the previous proposition.
 \end{proof}
-\end{cor}
 
 \begin{thm}
 Let $X$ be $d$-dimensional Gaussian.
@@ -213,6 +213,8 @@ We write $X \sim \Ndist{\textbf{m}}{C}$.
 \mathds{P}(X \in \mathrm{d}\textbf{x}))=\frac{1}{(2 \pi)^{\frac{d}{2}}} \frac{1}{(\det C)^{\frac{1}{2}}} \e^{-\frac{1}{2}(\textbf{x}-\textbf{m},C^{-1}(\textbf{x}-\textbf{m}))}~\mathrm{d}\textbf{x}.
 \end{align*}
 \end{enumerate}
+\end{thm}
+%TODO Kasten
 \begin{proof}
 \begin{enumerate}[label=(\alph*)]
 \item Assume $X,Y$ are $d$-dimensional Gaussian with mean $\textbf{m}$ and covariance matrix $C$.
@@ -231,8 +233,6 @@ Hence, the density is well-defined.
 To check that it is the right one, compute its characteristic function (remains as an exercise). \qedhere
 \end{enumerate}
 \end{proof}
-\end{thm}
-%TODO Kasten
 
 \begin{prop}
 Let $X \sim \Ndist{\textbf{m}}{C}$ $d$-dimensional Gaussian, $A \in \R^{n\times d}$.
@@ -245,13 +245,13 @@ The proof remains as an exercise.
 \begin{prop}
 Let $\textbf{X}\sim \Ndist{\textbf{m}}{C}$.
 Then $X^1,\dots,X^d$ are independent RVs if and only if $C_{ij}=0$ for all $i\not = j$, i.e., $X^i,X^j$ are uncorrelated.
+\end{prop}
 \begin{proof}
 \glqq $\Rightarrow$\grqq\, always holds (if the variances exist).
 For the other direction let $Y^1,\dots,Y^d$ be independent with $Y^i\sim \Ndist{m_i}{C_{ii}}$.
 Then by (1.13) $\textbf{X} \sim \textbf{Y}$ which implies that $(X^i)$ are independent.
 %TODO label richtig machen
 \end{proof}
-\end{prop}
 
 \begin{defi}
 Let $(X_t)_{t \in T}$ be an $E$-valued SP defined on a probability space $(\Omega,\mathcal{F},\Prob)$. The set of \emph{finite dimensional distributions (fdd)} of $\textbf{X}$ is the family of probability measures
@@ -279,12 +279,12 @@ Let $\textbf{X}$ be as in (1.16). Then its fdd fulfil the \emph{consistency cond
 \item[(C1)] $p_{t_1,\dots ,t_n}(C_1\times \dots \times C_n)=p_{t_{\sigma(1)},\dots ,t_{\sigma(n)}}(C_{\sigma(1)}\dots ,C_{\sigma(n)})$,
 \item[(C2)] $p_{t_1,\dots , t_n}(C_1\times \dots \times C_{n-1}\times E)=p_{t_1,\dots ,t_{n-1}}(C_1\times \dots \times C_{n-1})$.
 \end{enumerate}
-\begin{proof}
-This remains as an easy exercise.
-\end{proof}
 \end{prop}
 %Kasten
 %TODO 1.16 ordentlich machen
+\begin{proof}
+This remains as an easy exercise.
+\end{proof}
 
 \begin{defi}
 An $\Rd$-valued process $(X_t)_{t \in T}$ is called \emph{Gaussian process} if all its fdd are Gaussian measures.
@@ -315,6 +315,8 @@ Cov(B_s,B_t)=\E{B_s\otimes B_t}=\E{\left(B_s^iB_t^j\right)_{i,j=1,\dots,d}}=\min
 %TODO da muss noch iwo transposed hin, hier sollte es richtig sein
 \item Conversely, any Gaussian process with the mean and covariance functions from a) is a Brownian motion if it fulfills (B4).
 \end{enumerate}
+\end{thm}
+%Kasten
 \begin{proof}
 \begin{enumerate}[label=\alph*)]
 \item Let $t_1,\dots,t_n\in \R_0^+$ with $t_1<\dots<t_n$. Then
@@ -355,18 +357,16 @@ M'=A^{-1}M\left(A^{-1}\right)^\ast=\operatorname{diag}(t_1,t_2-t_1,\dots,t_n-t_{
 which implies that (B1) and (B2) holds. \qedhere
 \end{enumerate}
 \end{proof}
-\end{thm}
-%Kasten
 
 \begin{prop}
 Let $\textbf{B}^1$,\dots,$\textbf{B}^d$ be $1$-dimensional Brownian motions and
 let the $(\textbf{B}^i)_{i=1,\dots,d}$ be independent (as stochastic processes).
 Then $\left(B_t^1,\dots,B_t^d\right)_{t\geq 0}$ is a $d$-dimensional Brownian motion.
 Conversely, the coordinate processes $\left(B_t^i\right)_{t \geq 0}$ of a $d$-dimensional Brownian motion are independent $1$-dimensional Brownian motions.
+\end{prop}
 \begin{proof}
 This is remains as an exercise or can be found in Section 2.3 of Schilling/Partzsch.
 \end{proof}
-\end{prop}
 
 \begin{prop}
 Let $\textbf{B}$ be a $1$-dimensional Brownian motion. Then its fdd are given by
@@ -376,10 +376,10 @@ p_{t_1,\dots ,t_n}(A_1\times \dots \times A_n) = \Prob\left(B_{t_1\in A_1,\dots,
 \end{align}
 %TODO gleichung iwie schoen machen
 for all $0=t_0<t_1<\dots < t_n$, $A_1, \dots , A_n \in  \Borel(\R), n\in \N$ with $x_0=0$ and $x=(x_1,\dots , x_n)$.
+\end{prop}
 \begin{proof}
 Referring to Thm 1.20 this remains as an exercise.
 \end{proof}
-\end{prop}
 
 \begin{prop}
 The family of fdd given in the previous proposition is consistent in the sense of (1.17),(C1) and (C2).
@@ -427,17 +427,17 @@ The metric of \emph{local uniform convergence} on $C_0(\Rd)$ is given by
 \end{align*}
 The Borel-$\sigma$-algebra $\Borel(C_0)$ on $C_0$ is the smallest $\sigma$-algebra on $C_0$ such that all $\rho$-open sets are measurable.
 We have $\Borel(C_0)=\Borel(\Rd)^{\otimes \R_0^+}\cap C_0$.
+\end{bem}
 \begin{proof}
 This remains as an exercise.
 \end{proof}
-\end{bem}
 
 \begin{lem}
 Let $(E,\mathcal{E})$ be a measurable space, $T$ a set and $A \subseteq E^T$. Then $A \in \mathcal{E}^{\otimes T}$ if and only if there exists $I\subseteq T$ countable with $A \in \{\pi_t\colon t\in I\}$.
+\end{lem}
 \begin{proof}
 This remains as an exercise (on some exercise sheet).
 \end{proof}
-\end{lem}
 %important
 Recall the following:
 \begin{thm}[Thm 3.29 from Probability Theory, Winter Term 17/18]
@@ -450,10 +450,10 @@ $\mu \colon \Omega \times \mathcal{F} \to [0,1]$ with the properties
 \item Moreover, $\mu(\omega,\cdot)$ is a conditional probability of $A$ given $\mathcal{G}$, \ie $\mu(\omega,A)=\Prob(A\mid \mathcal{G})(\omega)$ for $\Prob$-almost all $\omega \in \Omega$.
 \end{enumerate}
 exists. $\mu$ is called \emph{regular conditional probability}.
+\end{thm}
 \begin{proof}
 Will be uploaded in the notes (to be done later).
 \end{proof}
-\end{thm}
 
 \begin{lem}
 Let $(\Omega,\mathcal{F})$ be a Borel space, $\mu \colon \Omega \times \mathcal{F} \to [0,1]$ with properties (1.28)(i),(ii) [called a \emph{probability kernel}].
@@ -463,10 +463,10 @@ $f \colon \Omega \times [0,1] \to \Omega$ with
 \mu(\omega,A)=\Prob(f(\omega,Y)\in A)= \int_0^1 \mathds{1}_{\{f(\omega,\cdot) \in A\}}(u)~\mathrm{d}u
 \end{align*}
 for all $\omega \in \Omega$, $A \in \mathcal{F}$.
+\end{lem}
 \begin{proof}
 This remains as an exercise or can be found in Kallenberg [Foundations of Modern Probability, 3.22].
 \end{proof}
-\end{lem}
 
 \begin{thm}
 Let $(E,\mathcal{E})$ be Borel.

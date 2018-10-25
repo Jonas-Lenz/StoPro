@@ -33,18 +33,17 @@
 % Environments for definitions, theorems etc.
 % All of these are numbered together within each chapter
 \swapnumbers % Numbers in front, e.g. “1.4 Theorem” instead of “Theorem 1.4”
-\theoremstyle{definition}
+\theoremstyle{default}
 \newtheorem{defi}{Definition}[chapter]
-\newtheorem{bsp}[defi]{Example}
-\newtheorem{ex}[defi]{Exercise}
+\newtheorem{bsp}[ams@defi]{Example}
+\newtheorem{ex}[ams@defi]{Exercise}
 
-\theoremstyle{plain}
-\newtheorem{thm}[defi]{Theorem}
-\newtheorem{prop}[defi]{Proposition}
-\newtheorem{lem}[defi]{Lemma}
-\newtheorem{cor}[defi]{Corollary}
+\newtheorem{thm}[ams@defi]{Theorem}
+\newtheorem{prop}[ams@defi]{Proposition}
+\newtheorem{lem}[ams@defi]{Lemma}
+\newtheorem{cor}[ams@defi]{Corollary}
 
-\newtheorem{bem}[defi]{Remark}
+\newtheorem{bem}[ams@defi]{Remark}
 
 % Texty abbreviations
 \newcommand*\eg{e.g.\ }

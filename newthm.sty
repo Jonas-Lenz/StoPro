@@ -1,0 +1,38 @@
+% Identify the package,
+% the usual boilerplate
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{newthm}%
+	[2018/10/25 extend amsthm interface to allow for qed-like markers]
+
+\RequirePackage{amsthm}
+
+% Save ams definitions
+\let\ams@newtheorem=\newtheorem
+\let\ams@theoremstyle=\theoremstyle
+\let\ams@newtheoremstyle=\newtheoremstyle
+
+% FIXME: Starred variant
+\renewcommand*\newtheorem{\@newthm}
+
+% TODO: Better support for counters
+\newcommand*\@newthm[1]{%
+	\newenvironment{#1}{%
+		\renewcommand*\qedsymbol{\csname qed@\thm@style@name\endcsname}%
+		\pushQED{\qed}%
+		\begin{ams@#1}
+	}{%
+		\popQED%
+		\end{ams@#1}
+	}
+	\ams@newtheorem{ams@#1}
+}
+
+\renewcommand*\theoremstyle[1]{
+	\def\thm@style@name{#1}%
+	\ams@theoremstyle{#1}
+}
+
+\renewcommand*\newtheoremstyle[2][]{%
+	\expandafter\def\csname qed@#2\endcsname{#1}%
+	\ams@newtheoremstyle{#2}%
+}

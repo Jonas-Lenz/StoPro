@@ -3,3 +3,4 @@ klammern müssen überall noch richtig gross gemacht werden
 labels ordentlichen machen (nummerierung eins runtersetzen)
 komma und matheumgebungen trennen
 \top for all transposed vectors
+insert \qedhere, like, everywhere
