@@ -17,6 +17,9 @@
 \newcommand{\abs}[1]{\left\vert#1\right\vert} % Absolute value
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert} % Norm
 \newcommand{\Po}{\mathcal{P}} % Powerset
+\newcommand\Sym[1]{\mathrm{S}_{#1}} % Symmetric group
+% Overriding superscript
+\renewcommand*\sp[3][auto]{\argl{#1}\langle #2, #3\argr{#1}\rangle} % Scalar product
 
 % Stochastical notations
 \DeclareMathOperator{\Cov}{Cov} % Covariance matrix
@@ -48,10 +51,20 @@
 % Texty abbreviations
 \newcommand*\eg{e.g.\ }
 \newcommand*\ie{i.e.\ }
+\newcommand*\iid{i.i.d.\@\xspace}
+\newcommand*\RV{random variable\xspace}
+\newcommand*\RVs{random variables\xspace}
+\newcommand*\SP{stochastic process\xspace}
+\renewcommand*\textast{\ensuremath{\ast}}
 
 % Mathy abbreviations
 \newcommand*\X{\mathbf{X}}
+\newcommand*\Y{\mathbf{Y}}
 \newcommand*\B{\mathbf{B}}
+\newcommand*\m{\mathbf{m}}
+\newcommand*\x{\mathbf{x}}
+\newcommand*\ba{\mathbf{a}}
+\newcommand*\ud[1]{\mathop{\mathrm{d}{#1}}}
 \newcommand{\Rd}{{\mathds{R}^d}} % The d-dimensional Euclidean space
 \newcommand{\Id}{\mathrm{I}_d} % Unit matrix of \R^d
 
@@ -64,7 +77,7 @@
 % Technical helpers
 \newcommand*\norml{}
 \newcommand*\normr{}
-\newcommand*\autol{\!\left}
+\newcommand*\autol{\left}
 \newcommand*\autor{\right}
 \newcommand*\argl[1]{\csname #1l\endcsname}
 \newcommand*\argr[1]{\csname #1r\endcsname}
