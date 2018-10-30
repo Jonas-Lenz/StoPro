@@ -688,16 +688,17 @@ Z_{t_n} \coloneqq X_t(\omega)-\tilde{X}_{t_n}(\omega)
 for $t_n \in D$, $t_n \to t$.
 Then $Z_{t_n}(\omega)\to Z_t(\omega)$ on $\Omega_0$, \ie almost surely, and by \eqref{eq:condition136}
 \begin{align*}
-\Prob(\abs{Z_{t_n}}>\varepsilon)&\leq \frac{1}{\varepsilon^q}\E{\abs{X_{t_n}-X_t}^q\\
+\Prob(\abs{Z_{t_n}}>\varepsilon)&\leq \frac{1}{\varepsilon^q}\E{\abs{X_{t_n}-X_t}^q}\\
 &\leq C \frac{1}{\varepsilon^q}\abs{t_n-t}^{\beta q} \to 0,
 \end{align*}
 $Z_{t_n}\to 0$ in probability and hence $Z_t=0$ almost surely.
 \item The map 
 \begin{align*}
 F \colon \Omega &\to \Omega_0\\
-\omega &\mapsto (\tilde{X}_t(\omega))_{t\in \R_0^+}$ is measurable.
-Then $\Prob_0=\Prob \circ F^{-1}.
+\omega &\mapsto (\tilde{X}_t(\omega))_{t\in \R_0^+}
 \end{align*}
+is measurable.
+Then $\Prob_0=\Prob \circ F^{-1}$. \qedhere
 \end{enumerate}
 \end{proof}
 
