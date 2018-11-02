@@ -74,6 +74,14 @@ is called \emph{Brownian Motion} (BM) if
 \end{defi}
 %TODO Kasten
 
+In (B4) we require continuity of all paths.
+For many settings,
+it would be more natural to require this only for almost-all paths.
+However, the set of continuous paths is usually not measurable
+and it is often easier to work exclusively with the continuous paths.
+It does not make much difference for the theory
+but we will consistently work with this definition.
+
 \begin{bem}
 Checking the requirements (B0)\,--\,(B4)
 in view of $B_t=\int_0^t \xi_s~\mathrm{d}s$:
@@ -429,11 +437,7 @@ holds for all $a\in\Rd$, which implies $\textbf{X}\sim \textbf{Y}$.
 	%TODO first line flushleft, second flushright
 	with the lower triangle matrix
 	\begin{align*}
-	A=\begin{pmatrix}
-	1 & \cdots & 0\\
-	\vdots & \ddots & \vdots\\
-	1 & \cdots & 1
-	\end{pmatrix}
+	A = \lowtriangones
 	\end{align*}
 	holds.
 	By (B1),(B3) and (1.9), $(B_{t_i}-B_{t_{i-1}})_{1 \leq i \leq n}\sim \Ndist{0}{C}$

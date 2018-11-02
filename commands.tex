@@ -67,6 +67,14 @@
 \newcommand*\ud[1]{\mathop{\mathrm{d}{#1}}}
 \newcommand{\Rd}{{\mathds{R}^d}} % The d-dimensional Euclidean space
 \newcommand{\Id}{\mathrm{I}_d} % Unit matrix of \R^d
+\newcommand*\lowtriangones{
+	\begin{pmatrix}
+	1 & \cdots & 0\\
+	\vdots & \ddots & \vdots\\
+	1 & \cdots & 1
+	\end{pmatrix}
+}
+\newcommand*\timeshift[2]{(#1_{t+#2}-#1_t)_{t \geq 0})}
 
 % Semantic commands
 \newcommand*\defn[1]{\emph{#1}} % Definiendum

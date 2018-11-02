@@ -1,0 +1,154 @@
+\def\BM{Brownian Motion}
+\chapter{Properties of \BM}
+
+\BM s have a lot of the general properties an SP might have.
+Hence, we can do a lot with \BM s we can not do in a more general setting.
+
+\section{Invariance properties}
+The statements are far more interesting than the proofs,
+which are too easy to help in understanding the properties.
+We can do all kinds of funny things to \BM and obtain \BM s again.
+
+When we just transform the values of a \BM,
+we can get new \BM s quite easily.
+
+\begin{prop}[Orthogonal invariance]
+	Let \(\B\) be a \def\BMd{\BM\textsuperscript{d}}\BMd
+	and \(U\) d by d orthogonal matrix
+	then \((U\B_t)_{t\in T}\) is a \BMd.
+	In particular, \(-\B = (-\B_t)_{t\in T}\) is a \BMd.
+\end{prop}
+% Kasten
+
+\begin{proof}
+	With \(UU^* = \Id\) we have …
+\end{proof}
+
+Instead of transforming the values,
+we can also shift the process in time.
+This is an important property which to understand will be quite usefull.
+
+\begin{prop}[Time shift invariance]
+\end{prop}
+% Kasten
+% TODO: Graphic depiction of time shift (lots o blood)
+%\begin{tikzpicture}
+%	\newcommand*\coordinates[2][]{%
+%		\begin{scope}}
+%\end{tikzpicture}
+
+The next property is very fundamental
+and central to our understanding of \BM s.
+The path a \BM takes is entirely independent of the path taken so far
+except for the value the \BM now starts at.
+If we forget where we are
+we essentially delete all memory of the past.
+For all relevant purposes,
+the value we take at the current point in time
+is all we know about what has happened so far.
+
+\begin{prop}[Memoryless property, elementary Markov property]
+	\(\timeshift\B a\)
+\end{prop}
+% Kasten
+
+\begin{proof}
+	Idea: fdd and intersection stable generator of the \(\sigma\)-algebras
+	Transform the fdd with \[A = \lowtriangones\]
+	to get another int stable generator.
+	Do this for both processes.
+	\[W_{t_i}-W_{t_{i-1}} = B_{t_i+a}-B_{t_{i-1}+a}\]
+	Use (B1).
+	P-Theo: Indep of int-stable generator means indep of sigma-alg.
+\end{proof}
+
+A diffusive rescaling is a rescaling of a process
+where we rescale the time,
+\eg let it run twice as fast,
+where we also transform the values to offset the rescaling.
+If we were to double the speed of a linear function
+and then were to divide the values by \(2\)
+we would obtain the original function again.
+In case of \BM we obviously will not be able to recover the exact function
+but we can get a process of identical distribution.
+
+\begin{prop}[Invariance under diffusive rescaling]
+\end{prop}
+% Kasten
+
+\begin{proof} Exercise\end{proof}
+
+Imagine ink in water.
+If we let time run 100 times as fast
+the ink will seem to disperse at (merely) ten times the speed.
+
+The function recovered exactly by this rescaling is the square root.
+This means that a \BM looks “locally like a square root except it doesn't”.
+\BM very rough and does not look like sqrt at all.
+(It only looks like sqrt on small and large scales. –.–)
+Sqrt leaves \(0\) very fast but gets slower over time.
+
+If we stop a \BM at some point in time
+and let it play backwards
+we obtain a \BM again.
+
+\begin{prop}[Time reversal symmetry]
+\end{prop}
+% Kasten
+\begin{proof} Exercise\end{proof}
+
+Another way in which \BM s look like the sqrt:
+\[\sqrt t = t\sqrt{\frac1t}\]
+
+relates behaviour at zero to behaviour at infinity
+How a bm looks at infinity how it looks at zero
+a very strong symmetry
+
+The involution is not a \BM on the original probability space
+since there will be paths that are not continuous in zero.
+However, nearly all paths are continuous
+and we can simply throw away the remaining points.
+
+\begin{prop}[Time involution invariance]
+\end{prop}
+% Kasten
+\begin{proof}
+	The hard part of the proof is continuity at zero
+
+	Something that is often very useful when dealing with SP:
+	Write out definition of the limit in quantors over countable sets.
+	Intersection with \(\Q\) is sufficient
+	since we have continuity outside of zero % FIXME Really? Needs details
+
+	\(\mathcal F \cap \Omega_0 \coloneqq \{F \cap \Omega_0 : F \in \mathcal F\}\)
+\end{proof}
+
+We now change our perspective.
+So far, we took values and time and did things to that.
+We took a function from R to R and transformed it in some way.
+All of these can be written as operators on function spaces
+to obtain measure-preserving maps.
+
+\begin{bem}[Invariances of Wiener measure]
+\end{bem}
+
+Think of \(C_0\) like a big \(\R^n\).
+Many maps will not preserve the measure but some do.
+
+\section{Martingale properties of \BM}
+
+In probability theory often only martingales on discrete sets are defined
+but it works just as well on continuous sets.
+
+\begin{defi}
+	The third condition is the one that makes a martingale a martingale
+
+	sub/super harmonic functions
+
+	\def\bup{\sffamily b\hspace*{-7.6pt}\raisebox{3pt}{\(\uparrow\)}}
+	\def\pdown{\sffamily p\hspace*{-7.6pt}\raisebox{-3pt}{\(\downarrow\)}}
+	\def\submart{\textsf{su\rlap{\bup}\phantom{b}-martingale}}
+	\def\supmart{\textsf{su\rlap{\pdown}\phantom{p}-martingale}}
+	\submart\ \supmart
+\end{defi}
+% Kasten
