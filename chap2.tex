@@ -152,3 +152,151 @@ but it works just as well on continuous sets.
 	\submart\ \supmart
 \end{defi}
 % Kasten
+
+%Here seventh lecture starts, only notes, nothing complete
+\begin{prop}[2.10]
+BM is an $\mathcal{F}_t^B$ martingale
+\end{prop}
+
+Later we will see that $\mathcal{F}^B$ is sometimes to small.
+Replacing it by a larger filtration can in principle destroy the martingale property.
+
+\begin{defi}[admissble filtration]
+
+\end{defi}
+
+Now, we check that a BM is a martingale wrt an admissible martingale.
+\begin{prop}
+BM is an $\mathcal{F}_t$ martingale.
+\end{prop}
+\begin{proof}
+same as for 2.10 as we used only independence of increments.
+\end{proof}
+
+\begin{prop}
+$(B_t)$ BM $\mathcal{F}_t$ admissible.
+Then the following SPs are martingales.
+\begin{enumerate}[label=\roman*)]
+\item $M_t\coloneqq \abs{B_t}^2-dt$
+\item $M_t^v \coloneqq \mathrm{e}^{(v,B_t)-\frac{t}{2}\abs{v_R}^2+\frac{t}{2}\abs{v_I}^2}$ for all $v=v_R+\i V_I \in \C^d$. (for real $\xi$ this may look like a Fourier transform).
+%TODO immernoch falsch
+\item For $d=1$, $M_t^n \coloneqq t^{\frac{n}{2}} H_n(t^{-\frac{1}{2}}B_t)$ where $H_n$ is the $n$-th Hermite polynomial, \ie ,
+$H_n(x)=(-1)^{\frac{1}{2}} \mathrm{e}^{-\frac{x^2}{2}} \partial_x^n(\mathrm{e}^{-\frac{x^2}{2}})$.
+These Hermite polynomials are an orthogonal basis in a weighted $\mathit{L}^2$ space, \ie ,
+\begin{align*}
+\int H_n(x)H_m(x) \mathrm{e}^{-\frac{x^2}{2}}~\mathrm{d}x=\delta_{n,m}
+\end{align*}
+when weighted by the correct factor (probably some $\frac{1}{\sqrt{2\pi}})$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}[label=\roman*)]
+\item It suffices to consider the case $d=1$ since
+\begin{align*}
+\abs{B_t}^2-dt=\sum_{j=1}^d \left(\abs{B_t^j}^2-t\right).
+\end{align*}
+We need to introduce increments in order to use the properties on an admissible filtration.
+\begin{align*}
+\E{B_t^2\mid \mathcal{F}_s}=\E{(B_t-B_2)^2 +2 B_s B_t-B_s^2 \mid \F_s}
+\end{align*}
+and use linearity and independence.
+\item First need to check integrability, $\E{\abs{M_t^v}\infty}$ by Corollary 1.12
+%TODO number correct?
+Now, $\E{M_t^v\mid \F_s}=\mathrm{e}^{-\frac{t}{2}\abs{v}^2} \mathrm{e}^{(v,B_2)} \E{\mathrm{e}^{(v,B_t-B_s)}\mid \F_s}$
+and use what we calculated in 1.12.
+\item exercise: expand $M_t^\alpha\coloneqq \e^{\alpha B_t}\e^{-\alpha^2 \frac{t}{2}}$
+and sort by powers of $\alpha$.
+\end{enumerate}
+\end{proof}
+
+All martingales so far were of the form $M_t=f(t,B_t)$ for some function $f$.
+But there are more general martingales.
+In order to construct those we need following important lemma.
+It is a classical theorem in theory of PDEs.
+
+\begin{lem}
+The transition density
+\begin{align*}
+p_t(x)=\frac{1}{(2\pi t)^\frac{d}{2}} \exp(-\frac{\abs{x}^2}{2t})
+\end{align*}
+of BM$^d$ solves the \emph{(scaled) heat equation}, \ie ,
+\begin{align*}
+\partial_t p_t(x)=\frac{1}{2}\Delta p_t(x)
+\end{align*}
+for all $t>0$ and $x \in \Rd$.
+\end{lem}
+\begin{proof}
+We consider the Fourier transform of the density as then it will be easier to calculate derivatives
+\begin{align*}
+\hat{p}_t(k)\coloneqq \int \e^{\i(k,x)}p_t(x)~\mathrm{d}x=\e^{-\frac{1}{2}\abs{k}^2t}
+\end{align*}
+Clearly $\partial_t \hat{p}_t(k)=-\frac{1}{2}\abs{k}^2\hat{p}_t(k)$ and by Dominated convergence we may change derivative and integration
+\begin{align*}
+\int \e^{\i(k,x)}\partial_t p_t(x)~\mathrm{d}x=-\frac{1}{2}\int \abs{k}^2 \e^{\i(k,x)} p_t(x)~\mathrm{d}x
+\end{align*}
+(...)
+and conclude by integration by parts 2 times in all coordinates.
+In order to conclude the desired equality we use that Fourier transform is an isomorphism which shows that both terms coincide almost everywhere  and as they are continuous they coincide everywhere.
+\end{proof}
+
+Main Theorem for today
+\begin{thm}
+Let $(B_t)$ be a Brownian Motion, $\F_t$ admissible.
+Let $f \in C([0,\infty)\times \Rd,\R)\cap C((0,\infty) \times \Rd,\R)$ and assume that there exists $C<\infty$ and a locally bounded function $t \mapsto c(t)$ with
+\begin{align*}
+\max\{\partial_t f(t,x),\partial_{x_i}^j f(t,x),f(t,x)\colon 1 \leq i \leq d,j=1,2\}\leq c(t)\e^{C\abs{x}}.
+\end{align*}
+technical assumption, most functions do satisfy this
+Define for $t\geq0$
+\begin{align*}
+M_t^f\coloneqq f(t,B_t)-f(0,B_0)-\int_0^t (Lf)(r,B_r)~\mathrm{d}r
+\end{align*}
+where $(Lf)(t,x)=\partial_t f(t,x)+\frac{1}{2}\Delta f(t,x)$.
+Then $(M_t^f)_{t \geq 0}$ is an $\F_t$ martingale.
+It is called the \emph{fundamental martingale} wrt $f$.
+\end{thm}
+For the proof we note the following lemma, which we have already seen in the discrete case.
+\begin{lem}[Doob's maximal inequality]
+Let $(M_t)$ be a nonnegative submartingale with continuous paths. Then for all $t\geq 0$ and $p>1$ we have
+\begin{align*}
+\E{\sup_{s\leq t} M_s^p}\leq \left(\frac{p}{p-1}\right)^p \E{M_t^p}
+\end{align*}
+\end{lem}
+\begin{proof}
+exercise, use discrete Martingales and 4.39 from Probability Theory.
+\end{proof}
+
+\begin{proof}[of Theorem 2.15]
+Fix $\overline{\omega}$ and calculate
+\begin{align*}
+\E{M_t^f\mid \F_s}(\overline{\omega})&=f(s,B_s(\overline{\omega}))-f(0,B_0(\overline{\omega}))\\
+-&\int_0^t (Lf)(r,B_r(\overline{\omega}))~\mathrm{d}r +\E{f(t,B_t)-f(s,B_s)-\int_s^t (Lf)(r,B_r)~\mathrm{d}r\mid \F_s}(\overline{\omega})=(\ast).
+\end{align*}
+By Proposition 2.23 of PT we know that if $X \amalg Y$ then
+\begin{align*}
+\E{h(X,Y)\mid \sigma(Y)}(\overline{\omega})=\E{h(X,Y(\overline{\omega})}.
+\end{align*}
+Applying this with $X=(B_r-B_s)_{r\geq s}$, $Y(s)=(B_r)_{r \leq s}$
+%bzgl welches s?!
+and
+\begin{align*}
+h(x,y)=f(t,B_{s,t}-B_s)-f(s,B_s)-\int_s^t (Lf)(r,B_{r,s}-B_s)~\mathrm{d}r
+\end{align*}
+we obtain from above
+\begin{align*}
+(\ast)&=M_s^f(\overline{\omega})+\E{f(t,B_{s,t}-B_s(\overline{\omega})}-f(s,B_s(\overline{\omega})-\int_s^t (Lf)(r,B_{r,s}-B_s(\overline{\omega}))~\mathrm{d}r\\
+&=M_s^f(\overline{\omega})+\E{\tilde{f}_{\overline{\omega}}(t-s,B_{t-s})-\tilde{f}_{\overline{\omega}}(0,0)-\int_0^{t-s} (L\tilde{f}_{\overline{\omega}}(r,B_{r-s})~\mathrm{d}r}
+\end{align*}
+with $\tilde{f}_{\overline{\omega}}(u,x)=f(u+s,x-B_s(\overline{\omega}))$.
+We used that $L$ commuters with shifts in the parameter space.
+The function $\tilde{f}_{\overline{\omega}}$ also fulfills of Thm 2.15, so the theorem will be proved if we can show $\E{M_t^f}=0$ for all allowed $f$, all $t$.
+Let $\varepsilon>0$ be arbitrary. Then by Fubini and the assumptions on $f$ we have
+\begin{align*}
+\E{\int_\varepsilon^t(Lf)(s,B_s)~\mathrm{d}s}&=\int_\varepsilon^t \E{(Lf)(s,B_s)}~\mathrm{d}s\\
+&=\int_\varepsilon^t \int p_s(x) (Lf)(s,x)~\mathrm{d}x~\mathrm{d}s\\
+&=\int \mathrm{d}x \int_\varepsilon^t p_s(x)(\partial_s f)(s,x)~\mathrm{d}s+\int_\varepsilon^t \mathrm{d}s \int p_s(x)(\frac{1}{2}\Delta f)(s,x)= (...)
+\end{align*}
+Hence, we get $\E{M_t^f}=\E{f(\varepsilon,B_\varepsilon)-f(0,B_0)}-\E{\int_0^\varepsilon (Lf)(s,B_s)~\mathrm{d}s}$ for all $t$ and $\varepsilon>0$.
+\end{proof}
+
