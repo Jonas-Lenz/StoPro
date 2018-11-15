@@ -1,4 +1,5 @@
 \def\BM{Brownian Motion}
+\def\BMd{\BM\textsuperscript{d}}
 \chapter{Properties of \BM}
 
 \BM s have a lot of the general properties an SP might have.
@@ -13,23 +14,32 @@ When we just transform the values of a \BM,
 we can get new \BM s quite easily.
 
 \begin{prop}[Orthogonal invariance]
-	Let \(\B\) be a \def\BMd{\BM\textsuperscript{d}}\BMd
-	and \(U\) d by d orthogonal matrix
+	Let \(\B\) be a \BMd
+	and \(U\) a $d$ by $d$ orthogonal matrix
 	then \((U\B_t)_{t\in T}\) is a \BMd.
 	In particular, \(-\B = (-\B_t)_{t\in T}\) is a \BMd.
 \end{prop}
 % Kasten
 
 \begin{proof}
-	With \(UU^* = \Id\) we have …
+	With \(UU^* = \Id\) we have using Proposition 1.14 that
+	\begin{align*}
+		(U\B)_{s,t} \sim \Ndist{0}{(t-s)\Id}
+	\end{align*}
+	holds true. The other properties are clear.
 \end{proof}
 
 Instead of transforming the values,
 we can also shift the process in time.
-This is an important property which to understand will be quite usefull.
+This is an important property which to understand will be quite useful.
 
 \begin{prop}[Time shift invariance]
+Let $\B$ be a \BMd\ and $a \in \R_{\geq 0}$.
+Then $(\B_{t+a}-\B_a)_{t \geq 0}$ is a \BMd.
 \end{prop}
+\begin{proof}
+The proof remains as an exercise.
+\end{proof}
 % Kasten
 % TODO: Graphic depiction of time shift (lots o blood)
 %\begin{tikzpicture}
@@ -48,7 +58,16 @@ the value we take at the current point in time
 is all we know about what has happened so far.
 
 \begin{prop}[Memoryless property, elementary Markov property]
-	\(\timeshift\B a\)
+	Let $(\B_t)$ be a \BMd\ and $a \in \R_{\geq 0}$.
+	The the SPs $(\B_t)_{0 \leq t \leq a}$ and
+	$(\mathbf{W}_t)_{t \geq 0} \coloneq\timeshift\B a$ are
+	independent.
+	In particular,
+	\begin{align*}
+		\E{F\left((\mathbf{W}_t)_{t\geq 0}\right)\mid \sigma(\B_s
+		\colon s\leq a)}=\E{F\left(\B_t)_{t \geq 0}\right)}
+	\end{align*}
+	for any measurable function $F \colon \CC_0 \to \R$.
 \end{prop}
 % Kasten
 
