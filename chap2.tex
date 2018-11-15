@@ -267,7 +267,7 @@ Let $(M_t)$ be a nonnegative submartingale with continuous paths. Then for all $
 exercise, use discrete Martingales and 4.39 from Probability Theory.
 \end{proof}
 
-\begin{proof}[of Theorem 2.15]
+\begin{proof}[Proof of Theorem 2.14]
 Fix $\overline{\omega}$ and calculate
 \begin{align*}
 \E{M_t^f\mid \F_s}(\overline{\omega})&=f(s,B_s(\overline{\omega}))-f(0,B_0(\overline{\omega}))\\
@@ -298,5 +298,361 @@ Let $\varepsilon>0$ be arbitrary. Then by Fubini and the assumptions on $f$ we h
 &=\int \mathrm{d}x \int_\varepsilon^t p_s(x)(\partial_s f)(s,x)~\mathrm{d}s+\int_\varepsilon^t \mathrm{d}s \int p_s(x)(\frac{1}{2}\Delta f)(s,x)= (...)
 \end{align*}
 Hence, we get $\E{M_t^f}=\E{f(\varepsilon,B_\varepsilon)-f(0,B_0)}-\E{\int_0^\varepsilon (Lf)(s,B_s)~\mathrm{d}s}$ for all $t$ and $\varepsilon>0$.
+%bis hier vl am 5.11
+It remains to show $\E{M_t^f}\to 0$ as $\varepsilon \to 0$.
+We estimate the last summand using Jensen's formula and obtain
+\begin{align*}
+\abs{\E{\int_0^\varepsilon (Lf)(s,B_s)~\mathrm{d}s}}& \leq \E{\int_0^\varepsilon \abs{Lf(s,B_s)}~\mathrm{d}s}\\
+&\leq \int_0^\varepsilon c(s)\E{\e^{\abs{B_s}}}~\mathrm{d}s \to 0
+\end{align*}
+as $\varepsilon<0$ as the integrand can be bounded uniformly by $\E{\e^{\abs{B_\varepsilon}}}$ multiplied by some constant, since $\e^{\abs{B_s}}$ is a submartingale.
+%why is this the case?
+For the other expression, Doobs maximal inequality will be the key tool.
+We have
+\begin{align*}
+\E{\sup_{s\leq \varepsilon}\abs{f(s,B_s)}} &\leq \sup_{s\leq \varepsilon} c(s)\E{\sup_{s\leq \varepsilon} \left( \e^{\frac{1}{2}C \abs{B_s}^2}\right)}\\
+&\leq \sup_{s\leq \varepsilon} c(s) \cdot 4 \cdot  \E{\e^{C \abs{B_s}}}.
+\end{align*}
+%TODO was genau passiert hier
+By the continuity of $f$ and $t\mapsto B_t$ we have
+\begin{align*}
+\lim_{\varepsilon \to 0} f(\varepsilon,B_\varepsilon(\omega))=f(0,0)
+\end{align*}
+for all $\omega$.
+The dominated convergence theorem then yields $\E{f(\varepsilon,B_\varepsilon)} \to f(0,0)$ as $\varepsilon \to 0$.
 \end{proof}
 
+\begin{bsp}
+\begin{enumerate}[label=\alph*)]
+\item Let $f(x,t)=x^2$. Then $Lf=1$ and we have $M_t^f=B_t^2-t$ (see 2.12 a)).
+\item Let $f(x,t)=x^3$. Then $Lf=3x$ and $M_t^f=B_t^3-3 \int_0^t B_s~\mathrm{d}s$.
+\item Let $f \colon \Rd \to \R$ be harmonic, \ie $\Delta f=0$.
+Then $Lf=0$ and hence $(f(B_t))_t$ is a martingale.
+For example for $d=2$ and $f(x,y)=\e^x\sin(y)$ then for any two-dimensional Brownian motion also $(\e^{{B_t}^{(1)}}\sin(B_t^{(2)}))_{t\geq 0}$ is a martingale.
+\item Let $\mathbf{B_t}=B_t^{(1)}+\i B_t^{(2)}$ be a complex Brownian motion where $B_t^{(j)}$ are independent BMs.
+Let $h$ be an entire function with not too much growth at $\infty$
+%whatever this should mean...
+Then $(h(\mathbf{B_t}))_{t \geq 0}$ is a martingale.
+The reason for this is that the real as well as the imaginary part of $h$ are harmonic (due to the Cauchy-Riemann differential equations).
+\end{enumerate}
+\end{bsp}
+
+\section*{Stopping times}
+
+\begin{defi}
+Let $(\F_t)$ be a filtration. A \emph{random time} is a $\R_0^+\cup \{\infty\}$-valued random variable.
+A \emph{stopping time} with respect to $(\F_t)$ is a random time $\tau$ with $\{\tau \leq t\} \in \F_t$ for all $t \in \R_0^+$.
+\end{defi}
+
+\begin{bsp}
+Let $(X_t)$ be an $(\F_t)$-adapted stochastic process with continuous paths and $F\subseteq \Rd$ a closed set. Then the random variable
+\begin{align*}
+\tau_F\coloneqq \inf\{s\geq 0\colon X_s \in F\}
+\end{align*}
+is a stopping time called the \emph{hitting time of $F$}.
+\end{bsp}
+\begin{proof}
+Define $d(x,F)=\inf\{\abs{x-y}\colon y \in F\}$ which is continuous in $x$.
+%distance as mathoperator?!
+By definition we have $\tau_F(\omega)\leq t$ if and only if $\inf\{s\geq 0 \colon X_s(\omega)\in F\} \leq t$. As $F$ is continuous and $(X_t)$ has continuous paths this is equivalent to the existence of $x\in F, s\leq t$ such that $X_s=x$.
+Using the continuity of the distance function an equivalent formulation is
+\begin{align*}
+\inf\{d(X_s(\omega),F),s\in [0,t]\}=0.
+\end{align*}
+Due to the continuity we can restrict ourselves to $s\in [0,t9\cap \Q$.
+Since $\{\omega \colon \inf\{d(X_s(\omega),F),s\in [0,t]\}=0\} \in \F_t$, the claim follows.
+%TODO wieso?!
+\end{proof}
+
+Obviously, this proof does not work for open sets, so we need a larger filtration.
+
+\begin{defi}
+Let $\X$ be a stochastic process. The filtration (check this!)
+\begin{align*}
+\F_{t+}^\X\coloneqq \bigcap_{u>t} \F_u^\X=\bigcap_{n=1}^\infty \F_{t+\frac{1}{n}}^\X
+\end{align*}
+is called the \emph{right-continuous completion} of $(\F_t^\X)$.
+Any filtration with the property $\F_t=\bigcap_{n\geq 1} \F_{t+\frac{1}{n}}$ is called \emph{right-continuous.}
+\end{defi}
+
+Now we can formulate an analogous result for open sets.
+\begin{lem}
+Let $\X$ be a stochastic process with right-continuous paths and let $U \subseteq \Rd$ be open.
+Then
+\begin{align*}
+\tau_U \coloneqq \inf\{s\geq 0\} \colon X_s \in U\}
+\end{align*}
+is an $(\F_{t+})$-stopping time.
+\end{lem}
+\begin{proof}
+We have
+\begin{align*}
+\{\tau_U \leq t\} &= \bigcap_{n\in \N} \{\tau_U<t+\frac{1}{n}\}\\
+&=\bigcap_{n\in \N}\bigcup_{j<t+\frac{1}{n}} \{X_j \in U\}\\
+&=\bigcap_{n\in \N}\bigcup_{j \in [0,\frac{1}{n})\cap \Q} \{X_j \in U\} \in \F_{t+}. \qedhere
+\end{align*}
+\end{proof}
+
+\begin{bsp}
+Let $(B_t)$ be a two-dimensional Brownian motion and $\tau_b\coloneqq \inf\{t \geq 0 \colon B_t=b\}$ for $b\in \R^2$ be the \emph{first passage time of $b$}.
+Then $\Prob(\tau_b<\infty)=1$ for all $b$.
+In fact, $t \mapsto B_t(\omega)$ infinitely often for almost all $\omega$. This follows from the next proposition.
+%TODO b should from \R^2 as b_t ist 2-dim, or?! or is b_t 1-dimensional which would makes sense with Proposition.
+\end{bsp}
+
+\begin{prop}
+Let $(B_t)$ be a one-dimensional Brownian motion.
+Then
+\begin{align*}
+\Prob\left(\limsup_{t \to \infty} \frac{1}{\sqrt{t}} B_t=\infty\right)=\Prob\left(\liminf_{t \to \infty} \frac{1}{\sqrt{t}} B_t=\infty\right)=1.
+\end{align*}
+Moreover, for all $t_0 \in \R_0^+$ we have
+\begin{align*}
+\Prob\left(\omega \colon B \text{ is not differentiable at } t_0 \right)=1.
+\end{align*}
+\end{prop}
+
+\begin{proof}
+It is clear that
+\begin{align*}
+\limsup_{t \to \infty} \frac{1}{\sqrt{t}} B_t &\geq \limsup_{n \in \N, n\to \infty} \frac{1}{\sqrt{n}}B_n \\
+&= \limsup_{n\to \infty} \frac{1}{\sqrt{n}} \sum_{k=1}^n B_{k,k-1}
+\end{align*}
+holds true where the $B_{k,k-1}$ are \iid random variables with variance $1$.
+By [PT, (2.50a)] we have $\Prob\left(\limsup_{n\to \infty} \frac{1}{\sqrt{n}} B_n=\infty\right)=1$ which implies that the first two statements hold.
+For the third, note that by the time shift invariance it is enough to consider $t_0=0$.
+By (2.6) we have
+\begin{align*}
+\Prob\left(\limsup_{t \to \infty} \frac{1}{\sqrt{t}}B_t =\infty\right)&=\Prob\left(\limsup_{t \to \infty} \sqrt{t}B_{\frac{1}{t}}=\infty\right)\\
+&=\Prob\left(\limsup_{t \to \infty} \frac{1}{\sqrt{t}} t B_{\frac{1}{t}}=\infty\right)=1.
+\end{align*}
+The same calculation can be done for $\liminf$.
+Hence, $\frac{1}{t}(B_t-B_0)$ does not converge almost surely.
+\end{proof}
+
+\begin{bem}
+It follows that $\Prob(t\to B_t \text{ is differentiable at any } t \in \Q_0^+)=0$.
+With more work, one can show
+\begin{align*}
+\Prob(\lambda(\{t \in \R_0^+ \colon B \text{ differentiable at } t\})=0)=1.
+\end{align*}
+With even more work, one can show
+\begin{align*}
+\Prob(\exists t \geq 0 \colon B \text{ differentiable at } t)=0.
+\end{align*}
+\end{bem}
+
+Now, we return to considering stopping times.
+
+\begin{prop}
+Let $\tau, \sigma$ and $(\tau_n)_{n\in \N}$ with respect to the filtration $(\F_t)$. Then we have
+\begin{enumerate}[label=\alph*)]
+\item $\{\tau <t\} \in \F$ for all $t$ and if $(\F_t)$ is right-continuous then $\{\rho <t\} \in \F_t$ for all $t$ then $\rho$ is a stopping time.
+\item $\tau+ \sigma$, $\tau \wedge \sigma$, $\tau \lor \sigma$ and $\sup_{n\in \N} \tau_n$ are $\F_t$-stopping times.
+\item If $(\F_t)$ is right-continuous then $\inf_n \tau_n$, $\liminf_{n \to \infty} \tau_n$ and $\limsup_{n \to \infty} \tau_n$ are stopping times.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+This remains as an exercise.
+\end{proof}
+
+\begin{lem}[Approximation]
+Let $\tau$ be a stopping time. For $n,m \in \N_0$ define $\tau_n(\omega)=(m+1)2^{-n}$ if $m2^{-n}\leq \tau(\omega)<(m+1)2^{-n}$ 
+and $\tau_n(\omega)=\infty$ if $\tau(\omega)=\infty$.
+Then $\tau_n$ is an $(\F_t)$-stopping time, taking countably many values.
+Also $\tau_n(\omega)\searrow \tau(\omega)$ for all $\omega \in \Omega$.
+\end{lem}
+\begin{proof}
+Also this remains as an exercise.
+\end{proof}
+
+\begin{defi}
+Let $(\F_t)$ be a filtration and $\tau$ be an $(\F_t)$-stopping time.
+The $\sigma$-algebra (check this!)
+\begin{align*}
+\F_t \coloneqq \{A \in \F \colon A \cap \{\tau \leq t\} \F_t \forall t \geq 0\}
+\end{align*}
+is called the \emph{$\sigma$-algebra of $\tau$'s past}.
+\end{defi}
+
+%ab hier vl am 12.11
+%letztes vorher: defi 2.27 sigma algebra of the past
+\begin{bsp}
+Let $C^0(\R_0^+,\Rd)$ and $\F_t=\sigma(\pi_s \colon s\leq t)$ then for $A \in \F=\sigma\left(\cup_{t\geq 0}\F_t\right)$, we have
+$A \in \F_t$ if and only if for all $\omega \in \Omega$, the values of $(\pi_s)_{s\leq t}$ determine whether $\omega \in A$.
+Moreover, we have $A \in \F_\tau$ if and only if for all $\omega \in \Omega$
+such that $\tau(\omega)\leq t$ the values of $(\pi_s)_{s\leq t}$ determine whether $\omega \in A$.
+In the case that $\tau(\omega)$ there is no restriction.
+Hence, the first condition is the important one.
+For example consider closed sets $F,G,H\subseteq \Rd$ and their entry times
+$\tau_F,\tau_G,\tau_H$ as in (2.20).
+Check whether the set
+\begin{align*}
+\{\omega \colon t&\mapsto \pi_t(\omega)\text{ first hits } F\text{, then } G\text{, then } H\}
+\end{align*}
+is in $\F_\sigma$ where $\sigma=\tau_F,\tau_G,\tau_H$.
+Do similarly for
+\begin{align*}
+\{\omega \colon t \mapsto \pi_t(\omega) \text{ has not entered } G \text{ before entering } F\}. 
+\end{align*}
+\end{bsp}
+
+\begin{prop}
+Let $(\F_t)$ be a filtration and $\tau,(\tau_n)$ be $(\F_t)$-stopping times. Then
+\begin{enumerate}[label=\alph*)]
+\item $\tau \in m \F_\tau$
+%TODO own command for measurable?!
+\item If $(\F_t)$ is right-continuous, then
+\begin{align*}
+\F_\tau=\{A \in \F \colon A\cap \{\tau<t\}\in \F_t \forall t\}.
+\end{align*}
+Note that in the definition we needed to consider $\{\tau\leq t\}$.
+\item If $\tau_1(\omega)\leq \tau_2(\omega)$ for all $\omega$ then this ordering also holds for the corresponding $\sigma$-algebras, \ie $\F_{\tau_1}\subseteq \F_{\tau_2}$.
+\item We have the following approximation property: If $(\F_\tau)$ is right-continuous and $\tau_n \searrow \tau$ then
+\begin{align*}
+\F_\tau=\bigcap_{n\in \N} \F_{\tau_n}.
+\end{align*}
+\item If $(X_t)$ is $(\F_t)$-adapted, $(\F_t)$ right-continuous and $t \mapsto X_t(\omega)$ is right-continuous, then the map
+\begin{align*}
+\omega \mapsto X_{\tau(\omega)}(\omega) \mathds{1}_{\{\tau_(\omega)<\infty\}},
+\end{align*}
+\ie the stopped process, is measurable with respect to $\F_\tau$.
+%this last property is like the motivation for the definition of sigma-algebra of the past, it tells us the
+%TODO google in this context diffusion limited aggregation, maybe include it in the text
+\end{enumerate}
+\end{prop}
+\begin{proof}
+a),b),c) are exercises
+\begin{itemize}
+\item[d)] By c) we have $\F_\tau\subseteq \cap_{n\in \N} \F_{\tau_n}$.
+Conversely, for $A \in \F_\tau$ we have
+\begin{align*}
+A \cap \{\tau<t\}=\bigsqcup_{n\in \N} A \cap \{\tau_n<t\} \in \F_t.
+\end{align*}
+%wo haben wir right-continuous verwendet?!
+\item[e)]
+Assume first that $\tau(\Omega)$ is countable.
+Then for all $B \in \Borel(\Rd)$ we have
+\begin{align*}
+\{X_\tau \in B\}\cap \{\tau\leq t\}=\bigsqcup_{k \colon t_k \leq t} \{\tau=t_k,X_{t_k}\in B\} \in \F_t.
+\end{align*}
+%have converted random stopping time into something deterministic
+For general $\tau$ we approximate as in (2.26), \ie
+$\tau_n(\omega)\searrow \tau(w)$ for all $\omega \in \Omega$.
+By the right-continuity of $t \mapsto X_t(\omega)$, we have
+\begin{align*}
+X_{\tau_n(\omega)}(\omega)\to X_{\tau(\omega)}(\omega)
+\end{align*}
+as $n\to \infty$ for all $\omega \in \Omega$.
+So, for all $n\geq m$ it holds that
+\begin{align*}
+X_{\tau_n} \in m \F_{\tau_n}\subseteq m \F_{\tau_m}
+\end{align*}
+hence $X_\tau \in m \F_{\tau_m}$ which implies $X_\tau \in m \cap_{m\geq 0} \F_{\tau_m}$ which by d) is equal to $\F_\tau$.
+\end{itemize}
+\end{proof}
+
+Next, we state and prove a very important theorem.
+We only formulate it for submartingales but by considering the negative process it holds with reversed inequalities for supermartingales and hence with equality for martingales.
+\begin{thm}[Doobs optional stopping theorem]
+Let $(X_t)$ be a $(\F_t)$-submartingale, $\sigma,\tau$ be $(\F_t)$-stopping times.
+\begin{enumerate}[label=\alph*)]
+\item The process $(X_{\tau \wedge k})_{k\in \N}$ is an $(\F_k)_{k\in \N}$ and an $(\F_{\tau \wedge k})$-submartingale.
+\item If there exists $T<\infty$ with $\sigma(\omega)\leq \tau(\omega)\leq T$ for all $\omega \in \Omega$ (\ie the stopping times are bounded) then
+\begin{align*}
+\E{X_\tau\mid \F_\sigma}(\omega)\geq X_{\sigma(\omega)}(\omega)
+\end{align*}
+holds $\Prob$-almost surely.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+We need to transfer known statements from discrete martingales and this remains as an exercise.
+\end{proof}
+\begin{bem}
+The boundedness restriction on the stopping times seems to be very strong.
+But, \eg, the condition $\Prob(\tau<\infty)=1$ is not enough, as the following example shows.
+Let $(B_t)_{t\geq 0}$ be a one-dimensional Brownian motion and $\tau=\tau_{\{3\}}$. Then by (2.23) $\Prob(\tau_3<\infty)=1$ and $B_{\tau_3(\omega}(\omega)=3$ for all $\omega \in \{\tau_3<\infty\}$.
+So, $3=\E{B_{\tau_3}} \not = \E{B_0}=0$.
+Then, statement b) of Theorem 2.30 with $\tau=\tau_3$ and $\sigma\equiv 0$ is false.
+The statement of (2.30b) does hold under several weaker conditions, see \eg Thm.  A18 in Schilling-Partzsch or Thm 1.93 in [Ligger-Cts time Markov Processes].
+We focus on a useful extension that requires $\E{X_t^2}<\infty$ for all $t$.
+\end{bem}
+
+\begin{defi}
+Let $(X_t)$ be an $\R$-valued martingale with continuous paths and $\E{X_t^2}<\infty$ for all $t$.
+A stochastic process $(A_t)_{t \geq 0}$ is called \emph{quadratic variation process}(qvp) of $(X_t)$ if
+\begin{enumerate}[label=(\roman*)]
+\item $A_0=0$,
+\item $t \mapsto A_t(\omega)$ is increasing almost surely,
+\item $(X_t^2-A_t)_{t \geq 0}$ is a martingale.
+\end{enumerate}
+\end{defi}
+\begin{bem}
+\begin{enumerate}[label=\alph*)]
+\item Proposition 2.12 a) shows that $A_t(\omega)\coloneqq t$ defines a qvp for a one-dimensional Brownian motion.
+\item For discrete martingales, Thm 4.49 of [PT] shows that $(A_n)_{n\in \N}$ is unique and is given by some nice formula which can be found there
+%TODO maybe include it here, too, lazy to include it in the lecture.
+\item For continuous martingales, there also exists a unique stochastic process fulfilling the preceding definition.
+It is given by
+\begin{align*}
+A_t= \lim_{\abs{\pi}\to \infty} \sum_{t_i \in \pi}(X_{t_i}-X_{t_{i-1}})^2
+\end{align*}
+where $\pi$ denotes some partition. The limit is independent of the approximating sequence of partitions and exists in $\mathit{L}^2$.
+The proof is long and can be found in [Ligget, Thm 5.3].
+\end{enumerate}
+\end{bem}
+
+\begin{thm}
+Let $(X_t)$ be a continuous martingale, $(A_t)$ its qvp and $\sigma,\tau$ be stopping times with $\sigma\leq \tau$.
+If $\Prob(\tau<\infty)=1$ and $\E{A_\tau}<\infty$, then
+\begin{enumerate}[label=\alph*)]
+\item $\E{X_\tau \mid \F_\sigma}=X_\sigma$ almost surely,
+\item $\E{X_\tau^2-A_\tau \mid \F_\sigma}=\X_\sigma^2-A_\sigma$ almost surely.
+\end{enumerate}
+In particular $\E{X_\tau}=\E{X_0}$ and $\E{X_\tau^2}=\E{X_0^2}-\E{A_\tau}$.
+\end{thm}
+\begin{proof}
+Let $n\geq k$. Since $\F_{\tau \wedge n}\supseteq \F_{\tau \wedge k} \supseteq \F_{\sigma \wedge k}$ and since $\tau \wedge n \leq n <\infty$, for any martingale $(M_t)$ we have by the tower property
+\begin{align*}
+\E{M_{\tau \wedge n} \mid \F_{\sigma \wedge k}}&=\E{\E{M_{\tau\wedge n} \mid \F_{\tau \wedge k}} \mid \F_{\sigma \wedge k}}\\
+&=\E{M_{\tau \wedge k} \mid \F_{\sigma\wedge k}}=M_{\sigma \wedge k},
+\end{align*}
+where we have used 2.30 a) and  b) in the last two steps.
+Applying this for $\sigma = \tau, M_t=X_t^2-A_t$ we obtain by the calculations above
+\begin{align*}
+\E{\left(X_{\tau \wedge n}-X_{\tau \wedge k}\right)^2}&=\E{X_{\tau\wedge n}^2 -X_{\tau \wedge k}^2}\\
+&=\E{A_{\tau \wedge n}- A_{\tau \wedge k}}\\
+&=\E{(A_{\tau \wedge n}- A_{\tau\wedge k} \mathds{1}_{\{\tau \geq k\}}} \overset{n,k \to \infty}{\longrightarrow} 0.
+\end{align*}
+This shows that $(X_{\tau \wedge n})_{n \in \N}$ is a Cauchy sequence in $\mathit{L}^2$.
+By the continuity of $X$ we have $X_{\tau \wedge n} \to \X_{\tau}$ almost surely and so $X_{\tau \wedge n} \to \X_\tau$ in $\mathit{L}^2$ and in particular
+\begin{align*}
+X_{\tau \wedge n}^2- A_{\tau \wedge n} \to X_\tau^2 -A_\tau
+\end{align*}
+in $\mathit{L}^1$ as $n \to \infty$.
+So, $M_{\tau \wedge n} \to M_tau$ in $\mathit{L}^1$ both holds for $M=X$ and $M=X^2-A$.
+Thus, for all $k$ and all $n\geq k$ we have using the tower property
+\begin{align*}
+\E{M_\tau\mid \F_{\sigma \wedge k}}&=\E{\E{M_\tau \mid \F_{\tau \wedge n}} \mid \F_{\sigma\wedge k}}\\
+&=M_{\sigma\wedge k}.
+\end{align*}
+By Thm 4.68 of [PT] we have
+\begin{align*}
+\E{M_\tau\mid \F_{\sigma \wedge k}} \to \E{M_\tau \mid \F_\sigma}
+\end{align*}
+almost surely and in $\mathit{L}^1$ as $k\to \infty$ and we already know that
+$M_{\sigma \wedge k} \to M_\sigma$ in $\mathit{L}^1$.
+This shows a),b). The final statement follow by taking $\sigma \equiv 0$ and taking expectation. 
+\end{proof}
+
+\begin{cor}[Wald's identities]
+Let $(B_t)$ be a one-dimensional Brownian Motion and $\tau$ a stopping time.
+if $\E{\tau}<\infty$, then
+\begin{align*}
+\E{B_\tau}=0, \E{B_\tau^2}=\E{\tau}
+\end{align*}
+\end{cor}
+\begin{proof}
+$B_t^2-t$ martingale, use (2.34)
+note $A_{\tau(\omega)}=\tau(\omega) \Rightarrow \E{A_\tau}=\E{\tau}$.
+\end{proof}
