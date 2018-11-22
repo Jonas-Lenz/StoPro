@@ -675,3 +675,203 @@ if $\E{\tau}<\infty$, then
 $B_t^2-t$ martingale, use (2.34)
 note $A_{\tau(\omega)}=\tau(\omega) \Rightarrow \E{A_\tau}=\E{\tau}$.
 \end{proof}
+
+We could have done the following earlier or later but at some point it has to be done and this might be a good time.
+We now show that all the staemtens about martingales so far apply to \BMd\ with the right-continuous completion filtration $(\F_{t+})$.
+First of all, we need to show that is at least admissible for the \BMd.
+\begin{lem}
+	The filtration $(\F_{t+})$ is admissible for the \BMd\ $\B$ in
+	the sense of Definition 2.11.
+\end{lem}
+\begin{proof}
+	a) is clear.
+	For b) let $0\leq t \leq u$, $F \in \F_{t+}$ and $f \in
+	\CC_b(\Rd)$.
+	Then we have $F \in \F^B_{t+\varepsilon}$ for all
+	$\varepsilon>0$.
+	Thus
+	\begin{align*}
+		\E{\mathds{1}_F f(B_{u+\varepsilon}-B_{t+\varepsilon})}=
+		\E{\mathds{1}_F} \E{f(B_{u+\varepsilon}-B_{t+\varepsilon})}.
+	\end{align*}
+	As $B_{u+\varepsilon}-B_{t+\varepsilon} \to B_u-B_t$ pointwise as
+	$\varepsilon \to 0$, we may apply dominated convergence and
+	obtain $B_u-B_t \amalg F$ which shows the claim.
+\end{proof}
+
+As a consequence we actually can equip a Brownian motion with the
+right-continuous completion of its filtration.
+
+\begin{prop}
+	Let $a<x<b$, $(\X_t)$ a continuous real-valued martingale with
+	$\Prob(X_0=x)=1$ and set $\tau_{(-\infty,a]}\wedge
+	\tau_{[b,\infty)}=\inf\{t\geq 0 \colon \X_t \not \in (a,b)\}$.
+	If $\Prob(\tau<\infty)=1$, then $\Prob(\X_t=a)=\Prob(\tau_{(-\infty,a]}<\tau_{[b,\infty)}
+	=\frac{b-x}{b-a}$ and $\Prob(\X_t=b)=\frac{x-a}{b-a}$.
+\end{prop}
+\begin{proof}
+	Let $(A_t)$ be the qvp of $(\X_t)$, $M_t\coloneqq \X_t^2-A_t$.
+	%TODO auch fett machen bzw was alles fett?!
+	Since $\tau \wedge n\leq n$, (2.29b) gives
+	\begin{align*}
+		\E{M_{\tau \wedge n}\mid \F_0}&\geq M_0,\\
+		\E{-M_{\tau\wedge n} \mid \F_0} &\geq -M_0,
+	\end{align*}
+	which implies 
+	\begin{align*}
+	\E{M_{\tau \wedge n}}&=\E{\E{M_{\tau \wedge n} \mid \F_0}}\\
+	&=\E{M_0}=x^2.
+	\end{align*}
+	As $0 \leq A_{\tau \wedge 1}\leq A_{\tau\wedge 2} \leq \dots$
+	pointwise, we may apply monotone convergence and obtain
+	\begin{align*}
+	\E{A_\tau}&=\lim_{n \to \infty} \E{A_{\tau \wedge n}}=
+	\lim_{n\to \infty} \E{X_{\tau \wedge n}^2}-x^2\\
+	&\leq \max(a^2,b^2)-x^2.
+	\end{align*}
+	By (2.33) we have
+	\begin{align*}
+		x&=\E{\X_0}=\E{\X_\tau} =\Prob(\X_tau=a)\cdot a +
+		\Prob(\X_\tau=b)\cdot b\\
+		&=\Prob(\X_\tau =a)(a-b)+b
+	\end{align*}
+	and we obtain both claims.
+\end{proof}
+
+Combining this with (2.14) for very interesting results about \BM.
+In order to state them we need the following definition.
+
+\begin{defi}
+	Let $\B$ be a \BMd\ and $x \in \Rd$.
+	Then the SP $(\B_t+x)_{t \geq 0}$ is called \emph{\BMd\ started
+	in $x$}, its probability measure (path measure) is denoted
+	by $\Prob^x$.
+\end{defi}
+%Kasten
+
+Now we have everything ready to state our next theorem.
+
+\begin{thm}
+	Let $x \in \Rd$, $\B$ a \BMd\ started in $x$.
+	Denote $B(0,r)=\{y\in \Rd \colon \abs{y}<r\}$
+	and $\overline{B}(0,r)$ its closure.
+	Then for $0<r<\abs{x}<R$ we have
+	\begin{align*}
+		\Prob^x (\tau_{\overline{B}(0,r)}<\tau_{B(0,R)})=
+		\begin{cases}
+		\frac{R-\abs{x}}{R-r}~~&d=1,\\
+		\frac{\ln R -\ln\abs{x}}{\ln R -\ln r}&d=2,\\
+		\frac{R^{2-d}-\abs{x}^{2-d}}{R^{2-d}-r^{2-d}}&d\geq 3.
+		\end{cases}
+	\end{align*}
+\end{thm}
+\begin{proof}
+	The case $d=1$ was shown in (2.36).
+	For $d=2$ consider the harmonic (check this!) function
+	\begin{align*}
+		f \colon \R^2\setminus \{0\} &\to \R
+		y &\mapsto \ln(y).
+	\end{align*}
+	Now let
+	\begin{align*}
+	\tilde{f}(y)=\begin{cases}
+	f(y),~~&\abs{y}> r,\\
+	\CC_b^2, &\abs{y}\leq r,
+	\end{cases}
+	\end{align*}
+	where we extend $f$ by any $\CC_b^2$-function.
+	%Idea M_t=f(B_t)
+	Let $g(t,y)\coloneqq \tilde{f}(y+x)$ and $\tilde{\B}$ a
+	\BM\textsuperscript{2} with $B=\tilde{B}+x$.
+	Then
+	\begin{align*}
+	M_t^g=g(t,\tilde{\B}_t)-g(0,\tilde{\B}_0)-
+	\int_0^t(Lg)(s,\tilde{\B}_s)~\mathrm{d}s
+	\end{align*}
+	with $L=\partial_t+\frac{1}{2}\Delta$.
+	Then $(Lg)=\frac{1}{2}\Delta\tilde{f}(\cdot +x)$
+	and
+	\begin{align*}
+		M_t &\coloneqq M_t^g+\tilde{f}(\B_0)\\
+		&=\tilde{f}(\B_t)-\frac{1}{2}\int_0^t (\Delta \tilde{f})
+		(\B_s)~\mathrm{d}s
+	\end{align*}
+	is a continuous real-valued martingale with $M_0=\ln\abs{x}$.
+	On $\{t \leq \tau_{\overline{B}(0,r)}\}$ we have $\abs{\B_s}>r$
+	for all $0<s<t$.
+	Hence, we have $\Delta \tilde{f}(B_s)=0$.
+	We find $\Prob(\tau_{\overline{B}(0,r)}<\tau_{B(0,R)^c}=
+	\Prob(\tau^M_{(-\infty,\ln(r)]}<\tau_{[\ln(R),\infty)})$
+	%TODO how to make complements right?
+	which by 2.36 is equal to $\frac{\ln R-\ln\abs{x}}{\ln R-\ln r}$.
+	Note that by (2.23) we have $\tau_{B(0,R)^c}<\infty$ almost 
+	%really by this number?!
+	surely and thus
+	\begin{align*}
+	\Prob(\tau_{[\ln(R),\infty)}<\infty)=1.
+	\end{align*}
+	For $d=3$ check that $f \colon \Rd\setminus \{0\}\to \R, y
+	\mapsto  \abs{y}^{2-d}$ is harmonic and proceed as above.
+\end{proof}
+%Kasten
+
+\begin{cor}
+For a \BMd\ starting in $x \not =0$ we have
+\begin{enumerate}[label=\alph*)]
+\item $\Prob^x(\tau_{\{0\}}<\infty)=\begin{cases}
+1,~~&d=1,\\
+0, &d=2.
+\end{cases}$
+\item For all $r \in (0,\abs{x}$ we have
+\begin{align*}
+\Prob^x(\tau_{\overline{B}(0,r)}<\infty)=
+\begin{cases}
+1,~~&d \leq 2,\\
+\left(\frac{\abs{x}}{2}\right)^{2-d},&d\geq 3.
+\end{cases}
+\end{align*}
+\end{enumerate}
+\end{cor}
+\begin{proof}
+We first prove b). We have
+\begin{align*}
+\Prob(\tau_{\overline{B}(0,r)}<\infty)=\lim_{R \to \infty} \Prob^x(
+\tau_{\overline{B}(0,r)}<\tau_{B(0,r)^c},
+\end{align*}
+which by the last theorem shows the claim.
+
+For a) we consider using continuity from above
+\begin{align*}
+\Prob^x(\tau_{\{0\}}<\tau_{B(0,r)^c}&=\lim_{r \searrow 0}
+\Prob^x(\tau_{\overline{B}(0,r)} <\tau_{B(0,R)^c})\\
+&=\begin{cases}
+1-\frac{\abs{x}}{R},~~d=1,\\
+0 &d \geq 2.
+\end{cases}
+\end{align*}
+As $\Prob^x(\tau_{\{0\}}<\infty)=\lim_{R \to \infty} \Prob^x(\tau_{\{0\}} \leq \tau_{B(0,R)^c})$ by continuity from below, we obtain the claim.
+\end{proof}
+
+Note that for $d=1$ we already saw this in 2.22.
+
+\begin{bem}
+Corollary 2.39 means that
+\begin{enumerate}[label=\alph*)]
+\item For $d\geq 2$ a \BMd\ never finds predetermined points.
+This is not surprising as $\Prob(X=a=0$ for $X \sim \mathcal{U}[0,1]$ 
+and $a \in [0,1]$.
+\item Starting far away, \BMd\ always arbitrary small balls (this is surprising!)
+but \BMd\ has a (good) chance to never find them for $d \geq 3$.
+%Now we get an somehow ugly sketch which i am not able to tex
+Similar to  memorylessness (2.3) the behaviour of $\B$ beyond $x_2$
+should coincide in distribution with second \BMd\ started in $x_2$,
+\ie $\Prob(\B \text{ finds } \overline{B}(0,r) \text{ second time})=1$ for $d=2$.
+Iterate procedure to find $\overline{B}(0,r)$ infinitely many times $\Prob^x$-almost surely, if $d=2$.
+%compare ergodicity theorems
+For $d \geq 3$, every time we go back to $\overline{B}(0,r)$ we pick
+up a factor $(\frac{R}{r}^{2-d}<1$.
+Hence, we will find $\overline{B}(0,r)$ only finitely many times $\Prob^x$-almost surely in $d \geq 3$.
+\end{enumerate}
+\end{bem}
+
+Main problem: restart time is random/stopping time. For this we need stronger property then memorylessness.
